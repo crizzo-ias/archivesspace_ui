@@ -2,7 +2,7 @@ en:
   errors:
     error_pdf: "The PDF you've tried to download does not exist or may have been removed."
   brand:
-    title: Institute for Advanced Study
+    title: Shelby White and Leon Levy Archives Center
     title_subtext: ""
     title_link_text: Return to the  main page
     logo_link: https://archives.ias.edu/
@@ -11,7 +11,7 @@ en:
     home: Home
     welcome_head: ''
     welcome_message:  <p><span class="large_it serif">Explore collection guides, finding aids, and inventories to locate unique materials in  special collections and archives.</span></p>
-    welcome_page_title: Archival Collections at the Institute for Advanced Study
+    welcome_page_title: Shelby White and Leon Levy Archives Center
     welcome_repo: <a href="/repositories" target="repos" title="see a list of repositories">CONTACT A REPOSITORY</a> <p class='serif'>Learn about hours, more detailed information, and specific policies for each location.</p>
     welcome_hollis: <a href="http://hollis.harvard.edu" target="hollis">EXPLORE MORE IN HOLLIS</a><p class='serif'>Use the Harvard Library catalog to search for additional materials including rare books, images, maps, and more special collections and archival materials.</p>
     welcome_ask: <a href="http://nrs.harvard.edu/urn-3:hul.ois:dsref" target="ask">ASK A LIBRARIAN</a><p class='serif'>Have questions about using this system? Start with this <a href="https://guides.library.harvard.edu/hollisforarchivaldiscovery" target="_blank">Guide</a>. Can’t find what you need? Contact an archivist or librarian for help!</p>
@@ -33,7 +33,7 @@ en:
     feedback: Send Feedback
     help: Help
     accessibility: Accessibility
-    copyright: © <b>2020</b> President and Fellows of Harvard College
+    copyright: © <b>2020</b> 
     harmful_language_statement: Harmful Language Statement
     privacy: Privacy
 
@@ -73,7 +73,7 @@ en:
     download: CSV
   search-limit: Limit
   search_results:
-    results_head: "%{type}: <span>%{start}</span> - <span>%{end}</span> of <span>%{total}</span>"
+    # results_head: "%{type}: <span>%{start}</span> - <span>%{end}</span> of <span>%{total}</span>"
     filter:
       add: Refine my results
 
@@ -82,103 +82,16 @@ en:
     aleph: Library Catalog ID
     alma: Library Catalog ID
     table_of_contents: Table of Contents
-    perma: Library Catalog Link
-    perma_link: "<a href='http://id.lib.harvard.edu/%{idpiece}/catalog'>http://id.lib.harvard.edu/%{idpiece}/catalog</a>"
+   
 
   context_delimiter: /
-  request_room:
-    arn: Botany Libraries reading room
-    ecb: Botany Libraries reading room
-    far: Botany Libraries reading room
-    gra: Botany Libraries reading room
-    orc: Botany Libraries reading room
-    hou:  Houghton Library reading room
-    law:  Historical &amp; Special Collections reading room, the Root Room
+ 
 
   request:
     default: "<strong>Ready to get to work?</strong><p>Once you have compiled a list of material you would like to consult in the reading room, please contact %{repo} at <a href='mailto:%{email}'>%{email}</a>.</p>"
     how_to_request: "How to Request"
-    how_to_request_link: "http://nrs.harvard.edu/URN-3:HUL.OIS:ASPACEPUI_REQUESTS_HELP"
-    bak: "To request materials for use in the Baker Library Special Collections reading room, go to the <a  target='_blank' href='http://id.lib.harvard.edu/%{idpiece}/catalog'>HOLLIS catalog record</a> and click on the <strong>View in Library</strong> button. Please be sure to include specific Volume/Box/Folder/Item information in your request."
-    ddo: "Ready to get to work? Once you have compiled a list of material you would like to consult in the reading room, please fill out our <a href='http://www.doaks.org/research/library-archives/access-and-hours/schedule-an-appointment' target='_new'>appointment request form</a>.
-Appointments are available Monday – Friday between 9:30am-12pm and 1pm-4:30pm."
-    hua: <strong>Ready to get to work?</strong><p>Once you have compiled a list of material you would like to consult in the reading room, please contact the Harvard University Archives at <a href="mailto:archives_reference@harvard.edu">archives_reference@harvard.edu</a>.</p>
-    med: <strong>Ready to get to work?</strong><p>Once you have compiled a list of material you would like to consult in the reading room, please contact the Center for the History of Medicine at the Countway Library at <a href="http://asklib.hms.harvard.edu" target="_blank">asklib.hms.harvard.edu</a> for assistance and additional information</p>
-    sch: Please note that the Schlesinger Library’s manuscript collections cannot yet be requested directly from the finding aid. In the meantime, once you have compiled a list of material you would like to consult, please contact Schlesinger Library, Radcliffe Institute at <a href='https://asklib.schlesinger.radcliffe.edu/index.php' target='_blank'>https://asklib.schlesinger.radcliffe.edu/index.php</a>.
-    room: To request materials for use in the %{room}, go to the <a  target='_blank' href='http://id.lib.harvard.edu/%{idpiece}/catalog'>HOLLIS catalog record</a> and click on the <strong>Request Item</strong> button . Please be sure to include the full Item Identifier in your request.
-  ask:
-    text:
-      default: Ask a Librarian
-      hua: Ask an Archivist
-    link:
-      default: https://ask.library.harvard.edu/index.php
-      hua: https://askarc.hul.harvard.edu/index.php?
-      div: https://asklib.hds.harvard.edu/
-      sch: http://asklib.schlesinger.radcliffe.edu/
-      bak: https://asklib.sc.hbs.org/index.php?
-      med: https://www.countway.harvard.edu/content/ask-us
-      law: https://asklib.law.harvard.edu/HSC/index
-      hou: https://ask.library.harvard.edu/friendly.php?slug=houghton
-  repos:
-    ajp:
-      lead_graph: "<p>The Arnold Arboretum Horticultural Library is a specialized collection devoted to the study of temperate woody plants. We collect works on botany, horticulture, floras, urban forestry and taxonomy. The library contains more than 25,000 volumes and 40,000 photographs, and includes an archive that both documents the Arboretum's history and is a repository for 19th, 20th, and 21st century horticultural and botanical collections.</p>"
-    art:
-      lead_graph: "<p>The Harvard Art Museums Archives is the official repository for institutional records and historical documents in all formats relating to the Fogg Museum, the Busch-Reisinger Museum, and the Arthur M. Sackler Museum, 1895 to the present. Its collections include papers of individuals and groups associated with the museums' history, including records of past exhibitions, architectural plans, photographs, scrapbooks, and memorabilia, as well as correspondence with collectors, gallery owners, museum professionals, and artists throughout the twentieth century. Its holdings also document the formation of the museums' collections and its mission as a teaching institution.</p>"
-      long: Harvard Art Museums Archives, Harvard Art Museums, Harvard University
-    bak:
-      lead_graph: "<p>Baker Library Special Collections holds unique resources that focus on the evolution of business and industry, as well as the records of the Harvard Business School, documenting the institution's development over the last century. These rich and varied collections support research in a diverse range of fields such as business, economic, social and cultural history as well as the history of science and technology.</p>"
-      long: Baker Library Special Collections, Harvard Business School
-    ddo:
-      lead_graph: "<p>Dumbarton Oaks holds archival collections in its Rare Book Collection, Image Collections and Fieldwork Archives, and the Dumbarton Oaks Archives. The collections include: the papers of noteworthy scholars in the three fields that Dumbarton Oaks supports (Byzantine, Pre-Columbian, and Garden and Landscape); image collections depicting objects or sites of topical interest to scholars in the three fields; Beatrix Farrand’s personal archive of letters and original drawings that document the development of the Dumbarton Oaks Garden; and institutional records and architectural plans and drawings documenting the history of Dumbarton Oaks. For more information about hours and to make an appointment to consult any of the collections listed here, please fill out the request form: <a target='_new' href='https://www.doaks.org/research/library-archives/schedule-an-appointment'>https://www.doaks.org/research/library-archives/schedule-an-appointment</a></p>"
-      long: Dumbarton Oaks
-    des:
-      lead_graph: "<p>The archival collections at GSD consist of primary source materials that further academic research in the design fields both within the GSD and beyond Harvard University. These materials, individually and collectively, offer engaging documentation of design history, theory, and practice. For further information, please visit: <a href='https://guides.library.harvard.edu/gsd/archives' target='_new'>https://guides.library.harvard.edu/gsd/archives</a></p>"
-      long: Frances Loeb Library Special Collections, Graduate School of Design, Harvard University
-    div:
-      lead_graph: "<p>Special Collections at Harvard Divinity School Library preserves and makes accessible primary source materials documenting the history of religion and theology, with particular historical emphasis on American liberal religious traditions. Though the historical strengths of the collections have been in the field of Christianity, other religious traditions are increasingly reflected, in step with Harvard Divinity School's evolving focus on global religious studies. Known as Andover-Harvard Theological Library since 1911, it was renamed the Harvard Divinity School Library in 2021.</p>"
-      long: Harvard Divinity School Library
-    env:
-      lead_graph: "<p>The Environmental Science and Public Policy Archives (ESPPA) has materials in the fields of environment and sustainability science, related public policy, and cultural perspectives on the environment. There is a strong but not exclusive emphasis on international environmental governance, including climate negotiations. The ESPPA is a global center for researchers interested in the history of climate change policy, toxicity and native peoples, and the standout success story of stratospheric ozone diplomacy.</p>"
-      long: Environmental Science and Public Policy Archives
-    fal:
-      lead_graph: "<p>The Fine Arts Library is among the leading libraries in the world for the study of art, architecture, and visual culture from antiquity to the present. Since 1895, FAL has served the needs of the visual arts community at Harvard, providing research and curricular support for all areas in the history of art, architecture, photography, and the decorative arts. FAL's archival collections may be consulted in the Special Collections Study Room by appointment only.</p>"
-      long: Fine Arts Library, Harvard Library, Harvard University
-    hua:
-      lead_graph: "<p>Holding nearly four centuries of materials, the Harvard University Archives is the principal repository for the institutional records of Harvard University and the personal archives of Harvard faculty, as well as collections related to students, alumni, Harvard-affiliates and other associated topics. The collections document the intellectual, cultural, administrative and social life of Harvard and the influence of the University as it emerged across the globe.</p>"
-    hou:
-      lead_graph: "<p>Houghton Library is Harvard College's principal repository for rare books and manuscripts, archives, and more. Houghton Library's collections represent the scope of human experience from ancient Egypt to twenty-first century Cambridge. With strengths primarily in North American and European history, literature, and culture, collections range in media from printed books and handwritten manuscripts to maps, drawings and paintings, prints, posters, photographs, film and audio recordings, and digital media, as well as costumes, theater props, and a wide range of other objects. Houghton Library has historically focused on collecting the written record of European and Eurocentric North American culture, yet it holds a large and diverse number of primary sources valuable for research on the languages, culture and history of indigenous peoples of the Americas, Africa, Asia and Oceania.</p><p>Houghton Library’s Reading Room is free and open to all who wish to use the library’s collections.</p>"
-      long: Houghton Library, Harvard College Library
-    law:
-      lead_graph: "<p>Harvard Law School Library's Historical &amp; Special Collections (HSC) collects, preserves, and makes available research materials for the study of the law and legal history. HSC holds over 8,000 linear feet of manuscripts, over 100,000 rare books, and more than 70,000 visual images.</p>"
-    med:
-      lead_graph: "<p>The Center for the History of Medicine in the Francis A. Countway Library of Medicine is one of the world's leading resources for the study of the history of health and medicine. Our mission is to enable the history of medicine and public health to inform healthcare, the health sciences, and the societies in which they are embedded.</p>"
-      long: Countway Library of Medicine, Center for the History of Medicine
-    mus:
-      long: Eda Kuhn Loeb Music Library
-      lead_graph: "<p>The Eda Kuhn Loeb Music Library is the primary repository of musical materials at Harvard. The Music Library’s collecting mission is to serve music teaching and research programs in the Music Department and throughout the Faculty of Arts and Sciences. In addition, it supports the musical needs of the broader Harvard community as well as an international scholarly constituency. We collect books, musical scores, serial titles, sound recordings and video formats, microforms, and rare and archival materials that support research in a wide variety of musical disciplines including historical musicology, music theory, ethnomusicology, composition, and historically informed performance practice, as well as interdisciplinary areas related to music. The special collections include archival collections from the 19th, 20th and 21st century.</p>"
-    pea:
-      lead_graph: "<p>Papers in the Peabody Museum Archives consist of primary source materials that document the Museum’s archaeological and ethnographic research and fieldwork since its founding in 1866. More than 2,800 feet of archival paper collections contain documents, papers, manuscripts, correspondence, data, field notes, maps, plans, and other historical records that represent diverse peoples from around the world, and which were created or collected by the Museum, its individual affiliates, or related entities. The collections also document the history or provenience, as well as the creation of, many of the Museum’s archaeological and ethnographic collections.</p>"
-      long: Peabody Museum of Archaeology and Ethnology Archives, Harvard University
-    uri:
-      lead_graph: "<p>Special Collections at the Ukrainian Research Institute Library include primary sources documenting the history of Ukraine in the 20th century, and Ukrainian &eacute;migr&eacute; social and cultural life in Europe, and the United States:<br/> <a href='http://www.huri.harvard.edu/library/special-collections.html' target='_new'>http://www.huri.harvard.edu/library/special-collections.html</a></p>"
-      long: Ukrainian Research Institute Library, Harvard University
-    sch:
-      lead_graph: "<p>The preeminent research library on the history of women in the United States, the Schlesinger Library documents women's lives from the past and present for the future. In addition to its traditional strengths in the history of feminisms, women’s health, and women’s activism, the Schlesinger collections document the intersectional workings of race and ethnicity, gender, sexuality, and class in American history.</p>"
-      long: Schlesinger Library on the History of Women in America, Harvard Radcliffe Institute
-    orc:
-      lead_graph: "<p>The Harvard University Herbaria houses five comprehensive, non-circulating research libraries that are managed collectively as the Botany Libraries.The Oakes Ames Orchid Library specializes exclusively in the identification and classification of the orchid family (Orchidaceae).  The Archives of the Oakes Ames Orchid Herbarium houses unique resources including personal papers, institutional records, field notes and plant lists, expedition records, photographs, original artwork, and objects from faculty, curators, staff, and affiliates of the Orchid Herbarium.</p>"
-    gra:
-      lead_graph: "<p>The Harvard University Herbaria houses five research libraries that are managed collectively as the Botany Libraries. The Gray Herbarium Library specializes in the identification and classification of  New World plants with emphasis on North American plants. The Archives of the Gray Herbarium houses unique resources including personal papers, institutional records, field notes and plant lists, expedition records, photographs, original artwork, and objects from faculty, curators, staff, and affiliates of the Gray Herbarium.</p>"
-    far:
-      lead_graph: "<p>The Harvard University Herbaria houses five  research libraries that are managed collectively as the Botany Libraries. The Farlow Reference Library of Cryptogamic Botany specializes in organisms that reproduce by spores, without flowers or seeds.  The Archives of the Farlow Herbarium of Cryptogamic Botany houses unique resources including personal papers, institutional records, field notes and plant lists, expedition records, photographs, original artwork, and objects from faculty, curators, staff, and affiliates of the Farlow Herbarium.</p>"
-    ecb:
-      lead_graph: "<p>The Harvard University Herbaria houses five research libraries that are managed collectively as the Botany Libraries.The Economic Botany Library specializes in materials related to economic botany or the commercial exploitation of plants. The Archives of the Economic Botany Herbarium of Oakes Ames houses unique resources including personal papers, institutional records, field notes and plant lists, expedition records, photographs, original artwork, and objects from faculty, curators, staff, and affiliates of the Economic Botany Herbarium.</p>"
-    arn:
-      lead_graph: "<p>The Harvard University Herbaria houses five research libraries that are managed collectively as the Botany Libraries. The Arnold Arboretum Library in Cambridge specializes in the identification and classification of Old World plants with emphasis on Asia. The Archives of the Arnold Arboretum (Cambridge) houses unique resources, primarily field notes related to the plant specimens housed in Cambridge.</p>"
-    mcz:
-      long: "Ernst Mayr Library of the Museum of Comparative Zoology, Harvard University"
-    hfa:
-      lead_graph: "<p>The Harvard Film Archive is one of the largest university-based motion picture collections in the United States, with a collection of 40,000 audio visual items, a growing number of manuscript collections, and nearly one million still photographs, posters, and other promotional materials from around the world and from almost every period in film history. The HFA's collection of paper materials, including the documentation of individual filmmakers as well as promotional materials such as posters, film stills, and ephemera are accessible to Harvard affiliates as well as to outside researchers.</p>"
+  
+  
 
   resource:
     _public:
@@ -207,8 +120,6 @@ Appointments are available Monday – Friday between 9:30am-12pm and 1pm-4:30pm.
     archival_record_level:
       unspecified: Item
       untitled: Untitled
-    aleph_link: "<a target='_blank' href='http://id.lib.harvard.edu/aleph/%{id}/catalog'>Link to catalog</a>"
-    hollis_link: "<a target='_blank' href='http://id.lib.harvard.edu/%{idpiece}/catalog'>Link to catalog</a>"
     _note_types:
       odd: General note
       abstract: Overview

@@ -36,7 +36,7 @@
     font-style: normal;
 }
 @font-face {
-    font-family: Lora;
+    font-family: 'Bodoni';
     src: url('/assets/Bodoni/BodoniFLF-Italic.ttf') format('truetype');
     font-weight: normal;
     font-style: italic;
@@ -59,7 +59,7 @@
 $sans-font:  "Gill-Sans", sans-serif;
 $serif-font: $sans-font;  /* we only serif on special occasions */
 $font-family-sans-serif: $sans-font;
-$font-family-serif: "Bodoni", Georgia, serif;  /* we only use this for special cases */
+$font-family-serif: "Bodoni", serif;  /* we only use this for special cases */
 
 $fi-path: "foundation-icon-fonts";
 

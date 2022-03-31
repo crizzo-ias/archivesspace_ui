@@ -16,11 +16,14 @@ a:hover, a:focus {
 }
 
 h1, .h1 {
-    font-family: "Gill-Sans", Arial, sans-serif;
+    font-family: "Bodoni",serif;
+    color: #004ecc;
 }
-
+.information h1 {
+  font-family: sans-serif;
+}
 h1 a, .h1 a {
-    color: #414141;
+    color: #004ecc;
 }
 
 h1.full-chars {

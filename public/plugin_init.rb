@@ -5,6 +5,7 @@ AppConfig[:pui_hide][:agents] = true
 AppConfig[:pui_hide][:accessions] = true
 AppConfig[:pui_hide][:classifications] = false
 AppConfig[:pui_branding_img] = '/assets/ias.png'
+AppConfig[:pui_branding_img_alt_text] = 'Institute for Advanced Study'
 
 ## OVERRIDE VARIOUS METHODS/ ADD NEW METHODS
 Rails.application.config.after_initialize do
