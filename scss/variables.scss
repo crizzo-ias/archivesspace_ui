@@ -1,0 +1,81 @@
+
+
+@font-face {
+    font-family: 'Gill-Sans';
+    src: url('/assets/Gil_Sans/gillsans.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Gill-Sans';
+    src: url('/assets/Gil_Sans/gillsansitalic.otf') format('opentype');
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Gill-Sans';
+    src: url('/assets/Gil_Sans/gillsansbold.otf') format('opentype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Gill-Sans';
+    src: url('/assets/Gil_Sans/gillsansbolditalic.otf') format('opentype');
+    font-weight: bold;
+    font-style: italic;
+}
+
+/* special serif */
+@font-face {
+    font-family: 'Bodoni';
+    src: url('/assets/Bodoni/BodoniXT.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: Lora;
+    src: url('/assets/Bodoni/BodoniFLF-Italic.ttf') format('truetype');
+    font-weight: normal;
+    font-style: italic;
+}
+@font-face {
+    font-family: 'Bodoni';
+    src: url('/assets/Bodoni/BodoniFLF-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Bodoni';
+    src: url('/assets/Bodoni/BodoniFLF-BoldItalic.ttf') format('truetype');
+    font-weight: bold;
+    font-style: italic;
+}
+
+
+
+$sans-font:  "Gill-Sans", sans-serif;
+$serif-font: $sans-font;  /* we only serif on special occasions */
+$font-family-sans-serif: $sans-font;
+$font-family-serif: "Bodoni", Georgia, serif;  /* we only use this for special cases */
+
+$fi-path: "foundation-icon-fonts";
+
+/* Bootstrap icons only */
+$icon-font-path: "bootstrap-sass/";
+$icon-font-name: "glyphicons-halflings-regular";
+$icon-font-svg-id: "";
+$bootstrap-sass-asset-helper: false;
+
+
+$row-width: 100%;
+
+$body-font-family: $sans-font;
+
+$text-color: $black;
+
+body {
+     font-family: $sans-font;
+}
