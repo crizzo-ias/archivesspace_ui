@@ -95,7 +95,7 @@ a.repo_info  {
 }
 
 span.large_it {
-    font-family: "Lora",Georgia, serif;
+    font-family: "Bodoni", serif;
     font-size: 1.4em;
     font-style: italic;
     font-weight: bold;
@@ -479,7 +479,7 @@ ul.navbar-nav {
 }
 
  div.nav-pill > a {
-  background-color: #0004ec;
+  background-color: #004ecc;
   color: #ffffff;
   text-transform: uppercase;
   font-size: 1.125em;
@@ -504,6 +504,8 @@ div.nav-pill.disabled {
 div.nav-pill.disabled > a {
     text-decoration: none;
     cursor: not-allowed;
+    opacity: 0.65;
+    filter: alpha(opacity=65);
 }
 
 /* restructuring of search */
@@ -1042,7 +1044,7 @@ a.objectimagelnk:hover, a.objectimagelnk:visited {
     box-sizing: border-box;
     color: rgb(65, 65, 65);
     display: block;
-    font-family: Lora, Georgia, serif;
+    font-family: "Bodoni", serif;
 }
 
 /* for missing digital object thumbnails with no caption */

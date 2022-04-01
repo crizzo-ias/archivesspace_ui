@@ -123,7 +123,7 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#004ECC", en
   font-style: normal; }
 
 @font-face {
-  font-family: Lora;
+  font-family: 'Bodoni';
   src: url("/assets/Bodoni/BodoniFLF-Italic.ttf") format("truetype");
   font-weight: normal;
   font-style: italic; }
@@ -8307,7 +8307,7 @@ a img {
   padding-right: 0; }
 
 .top-bar {
-  background: #f2f2dc !important;
+  background: #E9f0ce !important;
   border-top: 1px solid #1e1e1e;
   border-bottom: 0.0625rem solid #1e1e1e;
   float: none !important; }
@@ -8387,8 +8387,8 @@ a img {
   for the answer at http://stackoverflow.com/questions/18529274/change-navbar-color-in-twitter-bootstrap-3
 */
 .navbar-default {
-  background-color: #f2f2dc;
-  border-color: #f2f2dc; }
+  background-color: #E9f0ce;
+  border-color: #E9f0ce; }
   .navbar-default .navbar-brand {
     color: #414141; }
     .navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
@@ -8403,16 +8403,16 @@ a img {
       text-decoration: underline; }
   .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
     color: #1e1e1e;
-    background-color: #f2f2dc;
+    background-color: #E9f0ce;
     text-decoration: underline; }
   .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
     color: #1e1e1e;
-    background-color: #f2f2dc;
+    background-color: #E9f0ce;
     text-decoration: underline; }
   .navbar-default .navbar-toggle {
-    border-color: #f2f2dc; }
+    border-color: #E9f0ce; }
     .navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
-      background-color: #f2f2dc; }
+      background-color: #E9f0ce; }
     .navbar-default .navbar-toggle .icon-bar {
       background-color: #414141; }
   .navbar-default .navbar-collapse,
@@ -8433,7 +8433,7 @@ a img {
       text-decoration: underline; }
   .navbar-default .navbar-nav .open .dropdown-menu > .active > a, .navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover, .navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus {
     color: #1e1e1e;
-    background-color: #f2f2dc;
+    background-color: #E9f0ce;
     text-decoration: underline; } }
 
 #welcome {
@@ -8725,12 +8725,12 @@ button.subject {
   text-decoration: none;
   line-height: inherit;
   cursor: pointer;
-  border: 1px solid #f2f2dc; }
+  border: 1px solid #E9f0ce; }
 
 .page_action:hover,
 .page_action:focus {
   color: #414141;
-  background-color: #f2f2dc; }
+  background-color: #E9f0ce; }
 
 .top_container {
   color: #414141; }
