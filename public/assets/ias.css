@@ -292,6 +292,11 @@ h1 > span.title {
   min-width: 145px;
 }
 
+.navbar {
+  margin-top: -15px;
+  margin-bottom: 10px;
+}
+
 .navbar-collapse {
     padding-left: 0;
     padding-right: 0;
@@ -991,7 +996,7 @@ a.objectimagelnk:hover, a.objectimagelnk:visited {
     background-color: #E6E6E6;
 }
 
-/* added classes to support Harvard view changes */
+/* added classes to support IAS view changes */
 
 /* welcome text padding */
 
