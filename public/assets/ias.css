@@ -1,12 +1,17 @@
-/* colors for harvard
-   harvard_dark: #1e1e1e;   <-- background for top of header, used in some text
-   default_color: #414141;  <-- apparent default for text
-   greyer: #6c6c6c;  <-- used in contrast to darker color (for example: showing 10 of xxx, where the 10 & xxx are dark
-   link_blue: #0579b8;
-   crimson: #a51c30;
-   gray_back: #f2f2f2;
-   yellow: #f8c21c;
-   red: #eb001b;
+/* Colors for ias:
+$ias_blue: #004ecc	;
+
+$ias_greige: #f2f2dc;
+  lighter blue 659M 
+$ias_lightblue: #5ca6ff;
+lighter highlight 131M 
+$ias_light_highlight: #e89e00;
+darker highligh 7413M #	
+$ias_dark_highlight: #f57300;
+ greenish 7496M 
+$ias_greenish: #5f9e00;
+ greyish 7530M 
+$ias_greyish: #ADA089;
 */
 
 a { color: #004ecc; } /* assume blue unless otherwise told no */
@@ -347,7 +352,7 @@ h1 > span.title {
 }
 
 .search_placeholder {
-  font-family: "Gill-Sans";
+  font-family: "Gill-Sans", sans-serif;
 }
 
 .search_row_container, .search-filter-row {
@@ -502,6 +507,7 @@ div.nav-pill > a.active {
 }
 div.nav-pill.disabled {
     cursor: not-allowed;
+    background-color: #ADA089;
     opacity: 0.65;
     filter: alpha(opacity=65);
 }
