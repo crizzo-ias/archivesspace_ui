@@ -93,25 +93,25 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#004ECC", en
 /* this is for the top horizontal nav bar */
 @font-face {
   font-family: 'Gill-Sans';
-  src: url("/assets/Gil_Sans/gillsans.otf") format("opentype");
+  src: url("/assets/Gill_Sans/gillsans.otf") format("opentype");
   font-weight: normal;
   font-style: normal; }
 
 @font-face {
   font-family: 'Gill-Sans';
-  src: url("/assets/Gil_Sans/gillsansitalic.otf") format("opentype");
+  src: url("/assets/Gill_Sans/gillsansitalic.otf") format("opentype");
   font-weight: normal;
   font-style: italic; }
 
 @font-face {
   font-family: 'Gill-Sans';
-  src: url("/assets/Gil_Sans/gillsansbold.otf") format("opentype");
+  src: url("/assets/Gill_Sans/gillsansbold.otf") format("opentype");
   font-weight: bold;
   font-style: normal; }
 
 @font-face {
   font-family: 'Gill-Sans';
-  src: url("/assets/Gil_Sans/gillsansbolditalic.otf") format("opentype");
+  src: url("/assets/Gill_Sans/gillsansbolditalic.otf") format("opentype");
   font-weight: bold;
   font-style: italic; }
 
