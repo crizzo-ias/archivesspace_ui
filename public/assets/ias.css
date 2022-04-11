@@ -76,7 +76,7 @@ a.repo_info  {
 }
 
 #lead_graph, .repo_text {
-    font-family: "Bodoni",Georgia, serif;
+    font-family: "Bodoni", serif;
     padding: 0;
     padding-bottom: 1.25rem;
 }
@@ -766,7 +766,7 @@ i { vertical-align: top; }
 }
 
 .recordsummary {
-    font-family: "Bodoni", serif;
+    font-family: "Gill Sans", sans-serif;
 }
 
 /* remove zebra striping? */
@@ -932,7 +932,7 @@ ul.breadcrumb {background-color: #FFFFFF; }
 
 /*  the small icons in results */
 .record-type-badge {
-    width: 50px;
+    /*width: 50px; */
     vertical-align: top;
     display: inline-block;
 }
