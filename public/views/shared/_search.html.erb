@@ -27,7 +27,7 @@
         <div class="form-group limit-filter-col norepeat">
           <% if i == 0 %>
             <%= label_tag(:limit, t('search-limit'),:class => 'sr-only') %>
-            <span class="inline-label repeats"><%= t('search-limit') %>:</span>
+            <span class="inline-label repeats"><%= t('search-limit_label') %>:</span>
             <%= select_tag(:limit, options_for_select(limit_options, @search[:limit]), :class=> 'form-control search_placeholder limit-field') %>
           <% end %>
         </div>

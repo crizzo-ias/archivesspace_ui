@@ -62,7 +62,7 @@ en:
     parent: "Level %{i}"
     download_title: Download CSV
     download: CSV
-  search-limit: Limit
+  search-limit_label: Limit
   search_results:
     # results_head: "%{type}: <span>%{start}</span> - <span>%{end}</span> of <span>%{total}</span>"
     filter:
@@ -70,8 +70,6 @@ en:
 
   pdf_reports:
     return: Return to Table of Contents
-    aleph: Library Catalog ID
-    alma: Library Catalog ID
     table_of_contents: Table of Contents
    
 
