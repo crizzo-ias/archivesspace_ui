@@ -4,7 +4,7 @@ en:
   brand:
     title: Shelby White and Leon Levy Archives Center
     title_subtext: ""
-    title_link_text: Return to the  main page
+    title_link_text: Return to the main page
     logo_link: https://archives.ias.edu/
     logo_link_title: IAS
     logo_alt: IAS Logo
@@ -12,21 +12,12 @@ en:
     welcome_head: ''
     welcome_message:  <p><span class="large_it serif">Explore collection guides, finding aids, and inventories to locate unique materials in  special collections and archives.</span></p>
     welcome_page_title: Shelby White and Leon Levy Archives Center
-    welcome_repo: <a href="/repositories" target="repos" title="see a list of repositories">CONTACT A REPOSITORY</a> <p class='serif'>Learn about hours, more detailed information, and specific policies for each location.</p>
-    welcome_hollis: <a href="http://hollis.harvard.edu" target="hollis">EXPLORE MORE IN HOLLIS</a><p class='serif'>Use the Harvard Library catalog to search for additional materials including rare books, images, maps, and more special collections and archival materials.</p>
-    welcome_ask: <a href="http://nrs.harvard.edu/urn-3:hul.ois:dsref" target="ask">ASK A LIBRARIAN</a><p class='serif'>Have questions about using this system? Start with this <a href="https://guides.library.harvard.edu/hollisforarchivaldiscovery" target="_blank">Guide</a>. Can’t find what you need? Contact an archivist or librarian for help!</p>
-    welcome_notification: |
-      <div class="alert welcome_notification" role="alert">
-        <b>Coming Soon:</b> We’re adding a new feature! Soon you’ll be able to request materials for use in participating libraries and make reproduction requests directly from HOLLIS for Archival Discovery.
-        Check out <span><a href="https://docs.google.com/presentation/d/e/2PACX-1vQSjUgrykVO18_Ib1qOVFNOG-msg-HyPo6Zm49nA1JlkLRfmlVQjMv2_vL2myapiyRdWHevGJ9R5u_h/pub?start=true&loop=false&delayms=10000" target="_blank">this tutorial on direct requesting <i class="fa fa-external-link" aria-hidden="true"></i></a></span> to learn more.
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-
-  repository_count: "Repositories (%{count})"
-  repository_text: Special collections and archival materials are held at various repositories at Harvard University.
-
+    welcome_about: "<h4>About Archival Collections</h4>      <div>     The Shelby White and Leon Levy Archives Center serves as a home for collective memory at the Institute for Advanced Study. The Center collects, preserves, and provides access to primary source documents that represent the history of the Institute and its robust community of scholars. This website allows users to explore these holdings and request access to these collections. We welcome guests to search, discover, and engage with this website and to provide feedback to the Archives Center at <a href='mailto:archives@ias.edu'>archives@ias.edu</a>.<br>All descriptive information and metadata made available in this database is licensed under a CC0 1.0 Universal (CCO 1.0) Public Domain Dedication. This means that anyone may copy, modify, and distribute this descriptive metadata without restriction or permission. More information is available on the Creative Commons website: <a href='https://creativecommons.org/publicdomain/zero/1.0/'>CC0 1.0 Universal (CC0 1.0) Public Domain Dedication</a>
+     </div>"
+    welcome_requests: "<h4>Requesting Materials</h4>     <div>On the homepage for each collection, users will find a link to &quot;request&quot; access to materials. Wherever possible, we have provided links to collection materials that archivists have digitized and made available via <a href='https://albert.ias.edu'>Albert</a>, the Institute's Digital Repository. However, in many cases, only portions or partial selections of a collection are available online. The &quot;request&quot; button allows users to request in-person access to original materials and entire collections.<br><br>     When requesting materials, please be sure to consult the <a href='https://ias.edu/library/archives'>Shelby White and Leon Levy Archives Center website</a> to learn more about how to access the archives and book appointments for on-site visits to the Institute campus.    </div>"
+  
+    
+  
   footer:
     staff: Staff Interface
     aspace: "Powered by <a href='%{link}' target='_blank'>%{text}</a>"
