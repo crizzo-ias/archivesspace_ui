@@ -1,0 +1,104 @@
+ <%# any result that is going to be presented in a list %>
+  <% if !props.fetch(:full,false) %>
+   <div class="recordrow" style="clear:both" data-uri="<%= result.uri %>">
+     <% end %>
+     <%= render partial: 'shared/idbadge', locals: {:result => result, :props => props } %>
+     <div class="recordsummary" style="clear:both">
+       <% if !result['parent_institution_name'].blank? %>
+       <div><strong><%= t('parent_inst') %>:</strong>
+         <%= result['parent_institution_name'] %>
+       </div>
+       <% end %>
+
+       <% note_struct = result.note('abstract')
+	  if note_struct.blank?
+	    note_struct = result.note('scopecontent')
+          end
+	  if !note_struct['note_text'].blank? %>
+          <div class="abstract single_note"><span class='inline-label'><%= note_struct['label'] %></span>
+            <% unless note_struct['is_inherited'].blank? %>
+              <%= inheritance(note_struct['is_inherited']).html_safe %>
+            <% end %>
+           <% if note_struct['note_text'].length > AppConfig[:abstract_note_length] %>
+             <% truncated_note = note_struct['note_text'][0..AppConfig[:abstract_note_length]-1] %>
+             <% end_index = truncated_note.rindex(' ') || AppConfig[:abstract_note_length]-1 %>
+             <%= (strip_tags(truncated_note[0..end_index - 1]) + '...').html_safe %>
+           <% else %>
+	     <%= note_struct['note_text'].html_safe %>
+           <% end %>
+          </div>
+         <% end %>
+       
+
+
+
+
+
+
+
+
+
+
+
+
+    <% if result['json'].has_key?('dates') || result['json'].has_key?('dates_of_existence') %>
+      <div class="dates">
+
+        <% dates = (result['json']['dates'] || result['json']['dates_of_existence']
+        ).collect {|date| parse_date(date)}.reject{|label, expression| expression.blank?} %>
+        <% unless dates.empty? %>
+          <strong><%= t('dates') %>: </strong>
+        <% end %>
+        <%= dates.collect {|label, expression| label.blank? ? expression : "#{label}#{expression}"}.join('; ') %>
+      </div>
+    <% end %>
+
+    <% if result.resolved_repository %>
+      <div class="result_context">
+        <strong><%= t('context') %>: </strong>
+        
+
+
+
+
+        
+
+        <% if result.respond_to?(:ancestors) && result.ancestors %>
+          <% result.ancestors.each do |ancestor| %>
+            <%= t('context_delimiter') %>
+            <span class="ancestor">
+            <% identifier = ancestor.has_key?('id_0') ? (0..3).collect { |i| ancestor["id_#{i}"] }.compact.join('-') : nil %>
+            <% title = process_mixed_content(ancestor.fetch('title', "[#{ ancestor.fetch('level', 'untitled')}]" )).html_safe %>
+            <%= link_to (identifier.blank? ? title : "#{identifier}, #{title}"), app_prefix(ancestor.fetch('uri')) %>
+            </span>
+          <% end %>
+        <% else %>
+          <% unless props.fetch(:no_res, false) || result.resolved_resource.blank? %>
+            <%= t('context_delimiter') %>
+            <span class="resource_name">
+              <%= link_to process_mixed_content(result.resolved_resource.fetch('title')).html_safe, app_prefix(result.resolved_resource.fetch('uri')) %>
+            </span>
+          <% end %>
+        <% end %>
+      </div>
+    <% end %>
+
+
+       <% if !props.fetch(:full,false)  && result['primary_type'] == 'repository' %>
+       <div><strong><%= t('number_of', { :type => t('resource._plural') }) %></strong> <%= @counts[result.uri]['resource'] %></div>
+       <% end %>
+
+     <% if result.primary_type == 'classification' && result.classification_terms? %>
+     <div class="classification-subgroups">
+       <button class="btn btn-default btn-sm subgroup-toggle" aria-pressed="false">
+         <i aria-hidden="true" class="fa fa-plus"></i>
+         <%= t('classification._public.actions.show_subgroups') %>
+       </button>
+       <div class="classification-subgroups-tree largetree-container" style="display: none;"></div>
+     </div>
+     <% end %>
+   </div>
+
+<% if !props.fetch(:full,false) %>
+   </div>
+<% end %>
