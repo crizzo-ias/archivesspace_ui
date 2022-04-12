@@ -909,6 +909,7 @@ ul.breadcrumb {background-color: #FFFFFF; }
 
 .largetree-node.current .indentor {
     background-color: #e89e00;
+    background-image: none;
 }
 
 .largetree-node.current a.record-title {
@@ -923,6 +924,13 @@ ul.breadcrumb {background-color: #FFFFFF; }
 }
 .largetree-container tr.current td {
     background-color: #e89e00;
+}
+.largetree-container .current td,
+.largetree-container .current .table-cell {
+ background-color:#e89e00;
+}
+.largetree-container .current .table-cell {
+  background-color: #e89e00;
 }
 
 .inline-search-btn {
