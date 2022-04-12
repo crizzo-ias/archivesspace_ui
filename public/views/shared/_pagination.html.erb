@@ -1,0 +1,33 @@
+<% pager_id ||= 'paging' %>
+<% if pager && pager.pages.last > 1 %>
+<div id="<%= pager_id %>">
+
+  <ul class="pagination">
+    <% if pager.need_prev %>
+       <% if pager.pages.first == 2 %>
+         <li><a href="<%= app_prefix(pager.link) %>&page=1">1</a></li>
+       <% else %>
+         <li class="previous"><a href="<%= app_prefix(pager.link) %>&page=<%= pager.prev %>"><span aria-hidden="true">&larr;</span><%= t('previous') %></a></li>
+       <% end %>
+       <% if pager.pages.first > 2 %>
+         <li><a href="<%= app_prefix(pager.link) %>&page=1">1</a></li>
+         <li><a href="" style="pointer-events: none;">...</a></li>
+       <% end %>
+    <% end %>
+    <% pager.pages.each do |page| %>
+      <% if page == pager.page %>
+        <li class="active"><a href="#"><%= page %></a></li>
+      <% else %>
+        <li><a href="<%= app_prefix(pager.link) %>&page=<%= page %>"><%= page %></a></li>
+      <% end %>
+    <% end %>
+    <% if pager.need_last %>
+       <li><a href="" style="pointer-events: none;">...</a></li>
+       <li><a href="<%= app_prefix(pager.link) %>&page=<%= pager.last_page %>"><%=  pager.last_page %></a></li>
+    <% end %>
+    <% if pager.need_next %>
+      <li class="next"><a href="<%= app_prefix(pager.link) %>&page=<%= pager.next %>"><%= t('next') %><span aria-hidden="true">&rarr;</span></a></li>
+    <% end %>
+</ul>
+</div>
+<% end %>

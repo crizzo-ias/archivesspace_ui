@@ -1,4 +1,6 @@
 en:
+  next: Next
+  previous: Previous
   errors:
     error_pdf: "The PDF you've tried to download does not exist or may have been removed."
   brand:
@@ -35,6 +37,7 @@ en:
     numeric: Container List
     print: View PDF
     browse: "Browse"
+    staff_link: Staff
 
   archive:
     _singular: The Archive

@@ -1,3 +1,5 @@
+# temp
+
 # sets up the AppConfig to conform to IAS's needs
 AppConfig[:pui_hide][:repositories] = true
 AppConfig[:pui_hide][:subjects] = false
@@ -6,6 +8,15 @@ AppConfig[:pui_hide][:accessions] = true
 AppConfig[:pui_hide][:classifications] = false
 AppConfig[:pui_branding_img] = '/assets/ias.png'
 AppConfig[:pui_branding_img_alt_text] = 'Institute for Advanced Study'
+AppConfig[:pui_page_actions_print] = true
+
+
+# TBD: THESE WILL NEED TO CHANGE!!!!
+AppConfig[:pui_email_override] = 'bobbi@bobbifox.net'
+AppConfig[:pui_email_enabled] = true
+AppConfig[:pui_request_email_fallback_from_address] = 'bobbifox@pair.com'
+AppConfig[:pui_request_email_fallback_to_address] = 'bobbi@bobbifox.net'
+
 
 ## OVERRIDE VARIOUS METHODS/ ADD NEW METHODS
 Rails.application.config.after_initialize do
@@ -26,4 +37,9 @@ Rails.application.config.after_initialize do
 
   ##### END BLOCK TO FIX BUG IN ASPACE CORE #####
 
+  # reassign page numbers for pagination
+  class Pager
+    Pager::PAGE_NUMBERS_TO_SHOW
+    Pager::PAGE_NUMBERS_TO_SHOW = 5
+  end
 end
