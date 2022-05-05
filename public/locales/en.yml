@@ -78,6 +78,7 @@ en:
 
   context_delimiter: /
  
+  subject_term_type:  Subject Term Type
 
   request:
     default: "<strong>Ready to get to work?</strong><p>Once you have compiled a list of material you would like to consult in the reading room, please contact %{repo} at <a href='mailto:%{email}'>%{email}</a>.</p>"

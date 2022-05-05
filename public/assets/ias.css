@@ -157,6 +157,22 @@ span.large_it {
   padding-right: 1rem;
 }
 
+#header .col-sm-9 {
+  float: right;
+  text-align: right;
+}
+#header .logo {
+  float: left;
+  text-align: left;
+  height: 60px;
+
+}
+
+img.logo {
+  height: 59;
+  width: 300;
+}
+
 #pui_brand div.h1 {
     font-size: 1.6rem;
 }
@@ -329,6 +345,9 @@ h1 > span.title {
   background-color: transparent;
   margin:0;
 }
+ul.navbar-nav {
+  margin-left: -16rem;
+}
 .navbar-nav > li {
   padding-top: 1rem;
   padding-left: 1rem;
@@ -491,7 +510,7 @@ ul.navbar-nav {
  div.nav-pill {
      border-left: 1px solid #ffffff;
      border-right: 1px solid #ffffff;
-     background-color: #03315c;
+     background-color: #447DB3;
      color: #ffffff;
      text-align: center;
      padding-top: 6px;
@@ -504,7 +523,7 @@ ul.navbar-nav {
 }
 
  div.nav-pill > a {
-  background-color: #03315c;
+  background-color: transparent;
   color: #ffffff;
   text-transform: uppercase;
   font-size: 1.125em;
