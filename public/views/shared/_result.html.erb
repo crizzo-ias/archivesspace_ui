@@ -53,33 +53,21 @@
       </div>
     <% end %>
 
-    <% if result.resolved_repository %>
+    
+    <% if (result.respond_to?(:ancestors) && result.ancestors)  %>
+
       <div class="result_context">
         <strong><%= t('context') %>: </strong>
         
-
-
-
-
-        
-
-        <% if result.respond_to?(:ancestors) && result.ancestors %>
           <% result.ancestors.each do |ancestor| %>
-            <%= t('context_delimiter') %>
+            
             <span class="ancestor">
             <% identifier = ancestor.has_key?('id_0') ? (0..3).collect { |i| ancestor["id_#{i}"] }.compact.join('-') : nil %>
             <% title = process_mixed_content(ancestor.fetch('title', "[#{ ancestor.fetch('level', 'untitled')}]" )).html_safe %>
             <%= link_to (identifier.blank? ? title : "#{identifier}, #{title}"), app_prefix(ancestor.fetch('uri')) %>
             </span>
-          <% end %>
-        <% else %>
-          <% unless props.fetch(:no_res, false) || result.resolved_resource.blank? %>
             <%= t('context_delimiter') %>
-            <span class="resource_name">
-              <%= link_to process_mixed_content(result.resolved_resource.fetch('title')).html_safe, app_prefix(result.resolved_resource.fetch('uri')) %>
-            </span>
           <% end %>
-        <% end %>
       </div>
     <% end %>
 
