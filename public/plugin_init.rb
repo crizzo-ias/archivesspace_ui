@@ -17,6 +17,11 @@ AppConfig[:pui_email_enabled] = true
 AppConfig[:pui_request_email_fallback_from_address] = 'bobbifox@pair.com'
 AppConfig[:pui_request_email_fallback_to_address] = 'bobbi@bobbifox.net'
 
+# page actions override
+AppConfig[:pui_page_actions_cite] = true
+AppConfig[:pui_page_actions_request] = true
+AppConfig[:pui_page_actions_print] = true
+
 
 ## OVERRIDE VARIOUS METHODS/ ADD NEW METHODS
 Rails.application.config.after_initialize do

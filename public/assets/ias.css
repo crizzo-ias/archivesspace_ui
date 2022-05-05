@@ -1,34 +1,33 @@
 /* Colors for ias:
-$ias_blue: #004ecc	;
+$ias_blue: #03315C;
 
 $ias_greige: #f2f2dc;
-  lighter blue 659M 
-$ias_lightblue: #5ca6ff;
-lighter highlight 131M 
-$ias_light_highlight: #e89e00;
-darker highligh 7413M #	
-$ias_dark_highlight: #f57300;
+$ias_lightblue: #055299;
+$ias_lighterblue: #447DB3;
+$ias_light_highlight: #f2d997;
+$ias_dark_highlight: #E8BB45;
+$ias_light_highlight: #f2d997;
+$ias_menu_border:#055299
  greenish 7496M 
 $ias_greenish: #5f9e00;
- greyish 7530M 
 $ias_greyish: #ADA089;
 */
 
-a { color: #004ecc; } /* assume blue unless otherwise told no */
+a { color: #03315C; } /* assume dark blue unless otherwise told no */
 
 a:hover, a:focus {
-   color: #ADA089;
+   color: #f2d997; /* gold */
 }
 
 h1, .h1 {
     font-family: "Bodoni",serif;
-    color: #004ecc;
+    color: #03315c;
 }
 .information h1 {
   font-family: sans-serif;
 }
 h1 a, .h1 a {
-    color: #004ecc;
+    color: #03315c;
 }
 
 h1.full-chars {
@@ -177,7 +176,7 @@ input, button, select {
 /* accordion stuff */
 
 a.accordion-toggle {
-    color:  #5ca6ff;
+    color:  #055299;
     text-transform: uppercase;
 }
 a.accordion-toggle:hover, a.accordion-toggle:focus {
@@ -282,15 +281,19 @@ h1 > span.title {
 }
 
 /* top horizontal menu */
+#collapsemenu {
+  background-color: #055299 !important;
+}
 .search-field {
   border-right: none;
 }
 .top-bar {
-    background-color: #FFFFFF !important;
+    background-color: #055299 !important;
     border: 0;
-    margin-top: 2em;
-    margin-right: 2em;
+    margin-top: 0;
+   /* margin-right: 2em; */
     padding-right: 0;
+    /*padding-bottom: 1rem; */
 }
 
 .limit-field {
@@ -307,31 +310,43 @@ h1 > span.title {
     padding-right: 0;
 }
 .navbar-default {
-    background-color: #FFFFFF !important;
+    background-color: #055299 !important;
     border: 0;
 }
 .navbar-default .navbar-text {
-  color: #1E1E1E;
+  color: #FFFFFF;
 }
 
 .navbar-default .navbar-nav > li > a {
-  color: #004ecc;
+  color: #FFFFFF;
   padding-top: 0;
-  padding-bottom: 0;
+  padding-bottom: 1rem;
   padding-right: 10px;
   padding-left: 10px;
-  border-right: 1px solid #004ecc;
+  border-right: 1px solid #055299;
   font-size: inherit !important;
+  /*background-color: #055299; */
+  background-color: transparent;
   margin:0;
 }
+.navbar-nav > li {
+  padding-top: 1rem;
+  padding-left: 1rem;
+}
+.navbar-default .navbar-nav > li:hover {
+  background-color: #03315C;
+}
+
 .navbar-default .navbar-nav > li:last-child > a {
   border:0;
-  padding-right: 0;
+  padding-right: 1rem;
 }
 
 .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
-  color: #6c6c6c;
-  text-decoration: underline;
+  color: #f2d997;
+  text-decoration: none;
+  background-color: transparent;
+ /* background-color:  #03315c; */
 }
 
 .search-keyword {
@@ -476,7 +491,7 @@ ul.navbar-nav {
  div.nav-pill {
      border-left: 1px solid #ffffff;
      border-right: 1px solid #ffffff;
-     background-color: #004ecc;
+     background-color: #03315c;
      color: #ffffff;
      text-align: center;
      padding-top: 6px;
@@ -484,12 +499,12 @@ ul.navbar-nav {
 }
 
  div.nav-pill.active {
-    background-color: #e89e00;
+    background-color: #f2d997;
   color: #414141;
 }
 
  div.nav-pill > a {
-  background-color: #004ecc;
+  background-color: #03315c;
   color: #ffffff;
   text-transform: uppercase;
   font-size: 1.125em;
@@ -502,7 +517,7 @@ div.nav-pill > a:hover {
 div.nav-pill > a.active {
     text-decoration: none;
     cursor: none;
-    background-color: #e89e00;
+    background-color: #f2d997;
     color: #414141;
 }
 div.nav-pill.disabled {
@@ -515,14 +530,13 @@ div.nav-pill.disabled > a {
   text-decoration: none;
   background-color: #ADA089;
 }
-
 /* restructuring of search */
 div.search {
     color: #FFFFFF;
     padding-bottom: 25px;
     padding-top: 25px;
-    background: #004ecc; /* For browsers that do not support gradients */
-    background: linear-gradient( to right, #004ecc, #5ca6ff); /* Standard syntax (must be last) */
+    background: #03315c; /* For browsers that do not support gradients */
+    background: linear-gradient( to right, #03315c, #447DB3); /* Standard syntax (must be last) */
 }
 
 .search .form-inline {
@@ -624,7 +638,7 @@ i.fa-plus, i.fa-minus {
 
 /* general color choices */
 .fa-search {
-   color: #f57300;
+   color: #E8BB45;
 }
 
 .btn-primary {
@@ -732,7 +746,7 @@ a.thumbnail.digital_object{
 /* pagination color choices and padding*/
 .pagination > li > a,
 .pagination > li > span {
-    color: #004ecc;
+    color: #03315c;
     padding: 3px 7px;
     font-weight: bold;
 }
@@ -825,7 +839,7 @@ i { vertical-align: top; }
 
 .breadcrumb li { display: inline;}
 .breadcrumb>li+li:before {color: #6C6C6C; content: "/";}
-.breadcrumb * a {color: #004ecc; text-decoration: underline;}
+.breadcrumb * a {color: #03315c; text-decoration: underline;}
 ul.breadcrumb {background-color: #FFFFFF; }
 .breadcrumb > li:nth-child(2):before {content: "";}
 
@@ -899,16 +913,16 @@ ul.breadcrumb {background-color: #FFFFFF; }
 }
 
 .largetree-container td {
-    color: #004ecc;
+    color: #03315c;
 }
 
 .largetree-container a.record-title {
-    color:  #004ecc;
+    color:  #03315c;
 }
 /* collection organization side bar: current */
 
 .largetree-node.current .indentor {
-    background-color: #e89e00;
+    background-color: #f2d997;
     background-image: none;
 }
 
@@ -919,18 +933,18 @@ ul.breadcrumb {background-color: #FFFFFF; }
 }
 
 .largetree-container tr.current {
-    background-color: #e89e00;
+    background-color: #f2d997;
     outline: 0;
 }
 .largetree-container tr.current td {
-    background-color: #e89e00;
+    background-color: #f2d997;
 }
 .largetree-container .current td,
 .largetree-container .current .table-cell {
- background-color:#e89e00;
+ background-color:#f2d997;
 }
 .largetree-container .current .table-cell {
-  background-color: #e89e00;
+  background-color: #f2d997
 }
 
 .inline-search-btn {
@@ -964,8 +978,8 @@ ul.breadcrumb {background-color: #FFFFFF; }
     width: 200px;
 }
 .btn.digital_object {
-    color: #004ecc;
-    border-color:  #004ecc;
+    color: #03315c;
+    border-color:  #03315c;
 }
 
 .repository-logo {
@@ -991,9 +1005,9 @@ ul.breadcrumb {background-color: #FFFFFF; }
 
 a.objectimagelnk {
     display: inline-block;
-    color: #004ecc;
+    color: #03315c;
     border-style: solid;
-    border-color: #004ecc;
+    border-color: #03315c;
     border-radius: 4px;
     border-width: 1px;
     padding: 0.25rem;
@@ -1011,9 +1025,10 @@ a.objectimagelnk:hover, a.objectimagelnk:visited {
 
 /* welcome text padding */
 
-#welcome_text {
- /*   padding-top: 3em; */
-}
+/* #welcome_text {
+ padding-top: 3em; 
+} 
+*/
 #welcome_links {
     margin-top: 30px;
 }
