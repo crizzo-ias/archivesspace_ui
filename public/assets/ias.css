@@ -20,7 +20,7 @@ a:hover, a:focus {
 }
 .under {text-decoration: underline;}  /* for those occasions where we *want* underlining */
 h1, .h1 {
-    font-family: "Bodoni",serif;
+    font-family: "bodoni-urw",serif;
     color: #03315c;
 }
 .information h1 {
@@ -76,7 +76,7 @@ a.repo_info  {
 }
 
 #lead_graph, .repo_text {
-    font-family: "Bodoni", serif;
+    font-family: "bodoni-urw", serif;
     padding: 0;
     padding-bottom: 1.25rem;
 }
@@ -100,14 +100,14 @@ a.repo_info  {
 }
 
 span.large_it {
-    font-family: "Bodoni", serif;
+    font-family: "bodoni-urw", serif;
     font-size: 1.4em;
     font-style: italic;
     font-weight: bold;
 }
 
 .serif {
-    font-family: "Bodoni", serif;
+    font-family: "bodoni-urw", serif;
 }
 
 /* logo and header rows */
@@ -1095,7 +1095,7 @@ a.objectimagelnk:hover, a.objectimagelnk:visited {
     box-sizing: border-box;
     color: rgb(65, 65, 65);
     display: block;
-    font-family: "Bodoni", serif;
+    font-family: "bodoni-urw", serif;
 }
 
 /* for missing digital object thumbnails with no caption */

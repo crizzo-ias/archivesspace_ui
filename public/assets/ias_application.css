@@ -111,31 +111,6 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#004ECC", en
   font-weight: bold;
   font-style: italic; }
 
-/* special serif */
-@font-face {
-  font-family: 'Bodoni';
-  src: url("/assets/Bodoni/BodoniXT.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal; }
-
-@font-face {
-  font-family: 'Bodoni';
-  src: url("/assets/Bodoni/BodoniFLF-Italic.ttf") format("truetype");
-  font-weight: normal;
-  font-style: italic; }
-
-@font-face {
-  font-family: 'Bodoni';
-  src: url("/assets/Bodoni/BodoniFLF-Bold.ttf") format("truetype");
-  font-weight: bold;
-  font-style: normal; }
-
-@font-face {
-  font-family: 'Bodoni';
-  src: url("/assets/Bodoni/BodoniFLF-BoldItalic.ttf") format("truetype");
-  font-weight: bold;
-  font-style: italic; }
-
 /* we only serif on special occasions */
 /* we only use this for special cases */
 /* Bootstrap icons only */

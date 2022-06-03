@@ -28,38 +28,14 @@
     font-style: italic;
 }
 
-/* special serif */
-@font-face {
-    font-family: 'Bodoni';
-    src: url('/assets/Bodoni/BodoniXT.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'Bodoni';
-    src: url('/assets/Bodoni/BodoniFLF-Italic.ttf') format('truetype');
-    font-weight: normal;
-    font-style: italic;
-}
-@font-face {
-    font-family: 'Bodoni';
-    src: url('/assets/Bodoni/BodoniFLF-Bold.ttf') format('truetype');
-    font-weight: bold;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'Bodoni';
-    src: url('/assets/Bodoni/BodoniFLF-BoldItalic.ttf') format('truetype');
-    font-weight: bold;
-    font-style: italic;
-}
+
 
 
 
 $sans-font:  "Gill-Sans", sans-serif;
 $serif-font: $sans-font;  /* we only serif on special occasions */
 $font-family-sans-serif: $sans-font;
-$font-family-serif: "Bodoni", serif;  /* we only use this for special cases */
+$font-family-serif: bodoni-urw, serif;  /* we only use this for special cases */
 
 $fi-path: "foundation-icon-fonts";
 
