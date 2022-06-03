@@ -18,7 +18,7 @@ a { color: #03315C; } /* assume dark blue unless otherwise told no */
 a:hover, a:focus {
    color: #f2d997; /* gold */
 }
-
+.under {text-decoration: underline;}  /* for those occasions where we *want* underlining */
 h1, .h1 {
     font-family: "Bodoni",serif;
     color: #03315c;
@@ -34,6 +34,7 @@ h1.full-chars {
     font-family:  "Gill-Sans", sans-serif;
     margin-top: 5px;
 }
+
 
 
 #repo_deets .panel-body p {
