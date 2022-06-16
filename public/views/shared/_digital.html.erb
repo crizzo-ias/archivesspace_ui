@@ -1,6 +1,6 @@
 <%# expects 'dig_objs' as an array of hashes %>
 <!-- harvard plugin version!! -->
-<% Rails.logger.debug("Dig objs: #{dig_objs.pretty_inspect}") %>
+<% Rails.logger.debug("Dig objs: #{dig_objs}") %>
 <% unless dig_objs.blank? %>
 <div class="images">
   <% dig_objs.each do |d_file| %>

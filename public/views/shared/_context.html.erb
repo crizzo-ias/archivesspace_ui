@@ -1,0 +1,44 @@
+<%# HARVARD; this separates out the context ("found in") so it can be moved around more efficiently %>
+<%# it expects result, props as  local variables %>
+<% first = true %>
+    <% if result.resolved_repository %>
+      <div class="result_context" style="clear:both">
+        <%= t('context').upcase %>: 
+	<% unless props.fetch(:no_repo, false) %>
+        <span  class="repo_name">
+          <%= link_to result.resolved_repository.fetch('name'), app_prefix(result.resolved_repository.fetch('uri')) %>
+        </span>
+	<% first = false %>
+        <% end %>
+        <% if result.respond_to?(:ancestors) && result.ancestors %>
+          <% result.ancestors.each do |ancestor| %>
+	   <% unless props.fetch(:no_coll, false) && ancestor.fetch('level', 'unspecified') == 'collection' %>
+           <% if first 
+               first = false
+              else %> / <% end %>
+            <span class="ancestor">
+	      <% an_title = ancestor.fetch('title', nil)
+		 an_level = ancestor.fetch('level', 'unspecified')
+		 if an_level == 'otherlevel'
+		    an_level = ancestor.fetch('other_level', 'other level').capitalize
+		 else
+		   an_level = t("enumerations.archival_record_level.#{an_level}") 
+		 end
+		 %>
+	      <%= an_level %>:
+	      <% an_title = "[" +  t("enumerations.archival_record_level.untitled") + "]" if !an_title %>
+            <%= link_to process_mixed_content(an_title).html_safe, app_prefix(ancestor.fetch('uri')) %>
+            </span> 
+	    <% end %>
+          <% end %>
+        <% else %>
+          <% unless props.fetch(:no_res, false) || result.resolved_resource.blank? || result.uri == result.resolved_resource.fetch('uri','') %>
+	   <% unless first %> / <% end %>
+            <span class="resource_name">
+              <%= link_to process_mixed_content(result.resolved_resource.fetch('title')).html_safe, app_prefix(result.resolved_resource.fetch('uri')) %>
+            </span> 
+          <% end %>
+        <% end %>
+      </div>
+    <% end %>
+
