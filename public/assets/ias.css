@@ -31,7 +31,7 @@ h1 a, .h1 a {
 }
 
 h1.full-chars {
-    font-family:  "Gill-Sans", sans-serif;
+    font-family:  gill-sans-nova, sans-serif;
     margin-top: 5px;
 }
 
@@ -115,7 +115,7 @@ span.large_it {
 .panel-footer {
     background-color: #1e1e1e;
     color: #FFFFFF;
-    font-family: "Gill-Sans", sans-serif;
+    font-family: gill-sans-nova, sans-serif;
     font-weight: 100;
     text-align: left;
 }
@@ -123,7 +123,7 @@ span.large_it {
 .panel-footer a {
     background-color: #1e1e1e;
     color: #FFFFFF;
-    font-family: "Gill-Sans", sans-serif;
+    font-family: gill-sans-nova, sans-serif;
     font-weight: 300;
     text-decoration: none;
 }
@@ -387,7 +387,7 @@ ul.navbar-nav {
 }
 
 .search_placeholder {
-  font-family: "Gill-Sans", sans-serif;
+  font-family: gill-sans-nova, sans-serif;
 }
 
 .search_row_container, .search-filter-row {
@@ -487,7 +487,7 @@ ul.navbar-nav {
 }
 
 ul.navbar-nav {
-    font-family: "Gill-Sans", sans-serif;
+    font-family: gill-sans-nova, sans-serif;
     font-weight: 500;
     letter-spacing: 1.1px;
     padding: 0;
@@ -566,7 +566,7 @@ div.search {
 }
 
 .form-inline .inline-label {
-    font-family: "Gill-Sans", sans-serif;
+    font-family: gill-sans-nova, sans-serif;
     padding-right: 3px;
     text-transform: uppercase;
 }
@@ -703,7 +703,7 @@ i.fa-plus, i.fa-minus {
 
 /* page action and accordion buttons */
 .btn.page_action {
-    font-family: "Gill-Sans", sans-serif;
+    font-family: gill-sans-nova, sans-serif;
     font-size: .7rem;
     padding: 5px 10px;
 }
@@ -1056,14 +1056,14 @@ a.objectimagelnk:hover, a.objectimagelnk:visited {
     margin-right: 1em;
     margin-left: 1em;
     padding: 1em;
-    font-family: "Gill-Sans", sans-serif;
+    font-family: gill-sans-nova, sans-serif;
     font-style: normal;
 }
 .welcome_links > a {
     border-bottom: 2px solid #c6e4f5;
     color: #0579b8;
     font-weight: 500;
-    font-family: "Gill-Sans", sans-serif;
+    font-family: gill-sans-nova, sans-serif;
     letter-spacing: 1.1px;
     padding-bottom: 3px;
     text-decoration: none;
