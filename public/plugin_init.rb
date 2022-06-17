@@ -226,6 +226,9 @@ Rails.application.config.after_initialize do
       begin
         Rails.logger.debug("digital count? #{@request.request_uri}")
         @digital_count = get_digital_archival_results(@request.request_uri)["numFound"] || 0
+        # we may have digital objects at the resource level
+        results = get_resource_digital(@request.request_uri)
+        @digital_count = @digital_count + (results["numFound"] || 0)
       rescue Exception => boom
         STDERR.puts "Error getting digital object count for #{@request.request_uri}: #{boom}"
         @has_digital = false
@@ -256,20 +259,29 @@ Rails.application.config.after_initialize do
 
     # this is going to be moved, but I'm putting it here for now
     def get_digital_archival_results(res_id, size = 1)
-      Rails.logger.debug("get_dig_arch_results")
       solr_params = { "q" => 'digital_object_uris:[\"\" TO *] AND types:pui_archival_object AND publish:true',
                       "fq" => "resource:\"#{res_id}\"",
                       "rows" => size,
                       "fl" => "id,uri",
                       "wt" => "json" }
-      Rails.logger.debug("before calling solr")
       solr_results = archivesspace.solr(solr_params)
-      Rails.logger.debug("after calling solr")
-      Rails.logger.debug(solr_results["response"])
       results = solr_results["response"]
+      #  {"numFound"=>1, "start"=>0, "numFoundExact"=>true, "docs"=>[{"id"=>"/repositories/2/archival_objects/5956#pui", "uri"=>"/repositories/2/archival_objects/5956"}]}
+    end
+
+    #types:pui_digital_object AND publish:true AND linked_instance_uris:"/repositories/2/resources/2"
+    def get_resource_digital(res_id, size = 1)
+      solr_params = { "q" => "types:pui_digital_object AND publish:true",
+                      "fq" => "linked_instance_uris:\"#{res_id}\"",
+                      "rows" => size,
+                      "fl" => "id,uri",
+                      "wt" => "json" }
+
+      solr_results = archivesspace.solr(solr_params)
+      solr_results["response"]
     end
   end
-
+  #
   # reassign page numbers for pagination
   class Pager
     Pager::PAGE_NUMBERS_TO_SHOW
