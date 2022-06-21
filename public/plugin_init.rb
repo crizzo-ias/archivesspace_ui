@@ -3,29 +3,21 @@
 # sets up the AppConfig to conform to IAS's needs
 AppConfig[:pui_hide][:repositories] = true
 AppConfig[:pui_hide][:subjects] = false
-AppConfig[:pui_hide][:agents] = true
+AppConfig[:pui_hide][:agents] = false
 AppConfig[:pui_hide][:accessions] = true
 AppConfig[:pui_hide][:classifications] = false
-AppConfig[:pui_branding_img] = '/assets/ias.png'
-AppConfig[:pui_branding_img_alt_text] = 'Institute for Advanced Study'
+AppConfig[:pui_branding_img] = "/assets/ias.png"
+AppConfig[:pui_branding_img_alt_text] = "Institute for Advanced Study"
 AppConfig[:pui_page_actions_print] = true
-
-
-# TBD: THESE WILL NEED TO CHANGE!!!!
-AppConfig[:pui_email_override] = 'bobbi@bobbifox.net'
-AppConfig[:pui_email_enabled] = true
-AppConfig[:pui_request_email_fallback_from_address] = 'bobbifox@pair.com'
-AppConfig[:pui_request_email_fallback_to_address] = 'bobbi@bobbifox.net'
 
 # page actions override
 AppConfig[:pui_page_actions_cite] = true
 AppConfig[:pui_page_actions_request] = true
 AppConfig[:pui_page_actions_print] = true
 
-
 ## OVERRIDE VARIOUS METHODS/ ADD NEW METHODS
 Rails.application.config.after_initialize do
-     ##### BEGIN BLOCK TO FIX BUG IN ASPACE CORE #####
+  ##### BEGIN BLOCK TO FIX BUG IN ASPACE CORE #####
   # The code in this section is related to this issue in core ASpace: https://github.com/archivesspace/archivesspace/issues/2177
   # The issue has been resolved, but as of the 3.0.2RC on 8/9/21 has not made it into a release
   # When the commits listed in that issue have made it into the release that this plugin is running on
@@ -33,7 +25,7 @@ Rails.application.config.after_initialize do
 
   module I18n
     def self.prioritize_plugins!
-        self.load_path = self.load_path.reject { |p| p.match /plugins\// } + self.load_path.reject { |p| !p.match /plugins\// }
+      self.load_path = self.load_path.reject { |p| p.match /plugins\// } + self.load_path.reject { |p| !p.match /plugins\// }
     end
   end
 
