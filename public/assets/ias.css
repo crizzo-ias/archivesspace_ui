@@ -874,6 +874,10 @@ ul.breadcrumb {background-color: #FFFFFF; }
     text-transform: uppercase;
 }
 
+#sidebar h2 {
+  font-size: 1.25rem;
+}
+
 #sidebar form {
     margin-left: 0;
     margin-right: 0;
