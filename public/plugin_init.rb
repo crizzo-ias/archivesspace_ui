@@ -4,7 +4,7 @@ require "uri"
 # sets up the AppConfig to conform to IAS's needs
 AppConfig[:pui_hide][:repositories] = true
 AppConfig[:pui_hide][:subjects] = false
-AppConfig[:pui_hide][:agents] = true
+AppConfig[:pui_hide][:agents] = false
 AppConfig[:pui_hide][:accessions] = true
 AppConfig[:pui_hide][:classifications] = false
 AppConfig[:pui_branding_img] = "/assets/ias.png"
@@ -59,23 +59,6 @@ Rails.application.config.after_initialize do
       #      Rails.application.routes.call(request_env)
       ActionController::Redirecting.redirect_to(path)
     end
-
-    # This method is intended to duplicate the functionality of search_records from aspace core, with the
-    # only difference being that the sort in core was updated to sort by 'uri' instead of 'id'
-    # This broke the order of our csv downloads. This new method has been created rather than overwriting
-    # the one in core to avoid unintended side effects
-    def search_and_sort_records(record_list, search_opts = {}, full_notes = false)
-      search_opts = DEFAULT_SEARCH_OPTS.merge(search_opts)
-
-      url = build_url("/search/records", search_opts.merge("uri[]" => record_list))
-      Rails.logger.debug("search and sort: #{url}")
-      results = do_search(url)
-
-      # Ensure that the order of our results matches the order of `record_list`
-      results["results"] = results["results"].sort_by { |result| record_list.index(result.fetch("id")) }
-
-      SolrResults.new(results, search_opts, full_notes)
-    end
   end
 
   class Record
@@ -106,34 +89,6 @@ Rails.application.config.after_initialize do
     alias_method :core_set_up_advanced_search, :set_up_advanced_search
     alias_method :core_process_search_results, :process_search_results
 
-    # if a digital object is returned, replace with archival object
-    def process_search_results(base = "/search")
-      Rails.logger.debug("*** In plugin process search results")
-      caller(0, 6).each do |line|
-        Rails.logger.debug(line)
-      end
-      record_crit = { "resolve[]" => ["repository:id", "resource:id@compact_resource",
-                                     "ancestors:id@compact_resource",
-                                     "top_container_uri_u_sstr:id"] }
-      unless @results.records.blank?
-        @results.records.each_with_index do |result, inx|
-          if result["primary_type"] == "digital_object"
-            unless result["linked_instance_uris"].blank?
-              Rails.logger.debug("WE HAVE DIGITAL: ")
-              # link = "#{result["linked_instance_uris"][0]}#pui"
-              # begin
-              #   arch_obj = archivesspace.get_record(link, record_crit)
-              #   @results.records[inx] = arch_obj
-              # rescue Exception => error
-              #   STDERR.puts "**** Unable to find archival object #{link} for #{result["uri"]} [with message #{error.message}"
-              # end
-            end
-          end
-        end
-      end
-      core_process_search_results(base)
-    end
-
     # override the resources#index faceting
     def set_up_and_run_search(default_types = [], default_facets = [], default_search_opts = {}, params = {})
       if default_types.length == 1 && default_types[0] == "resource"
@@ -143,8 +98,6 @@ Rails.application.config.after_initialize do
         default_types.delete("agent")
         default_types.delete("subject")
       end
-
-      Rails.logger.debug("setup_up_and_run")
       core_set_up_and_run_search(default_types, default_facets, default_search_opts, params)
     end
 
@@ -154,7 +107,6 @@ Rails.application.config.after_initialize do
         default_types.delete("agent")
         default_types.delete("subject")
       end
-      Rails.logger.debug("setup_up_advanced")
       core_set_up_advanced_search(default_types, default_facets, default_search_opts, params)
     end
   end
@@ -167,18 +119,19 @@ Rails.application.config.after_initialize do
         @criteria["resolve[]"] = ["repository:id", "resource:id@compact_resource", "top_container_uri_u_sstr:id", "related_accession_uris:id", "digital_object_uris:id"]
         tree_root = archivesspace.get_raw_record(uri + "/tree/root") rescue nil
         @has_children = tree_root && tree_root["child_count"] > 0
-        @has_containers = has_containers?(uri)
+        @has_containers = false
         @result = archivesspace.get_record(uri, @criteria)
         @repo_info = @result.repository_information
         @page_title = "#{I18n.t("resource._singular")}: #{strip_mixed_content(@result.display_string)}"
         @context = [{ :uri => @repo_info["top"]["uri"], :crumb => @repo_info["top"]["name"] }, { :uri => nil, :crumb => process_mixed_content(@result.display_string) }]
         get_digital_objects(uri, params)
         fill_request_info
-      rescue RecordNotFound
+      rescue RecordNotFound => bang
         @type = I18n.t("resource._singular")
         @page_title = I18n.t("errors.error_404", :type => @type)
         @uri = uri
         @back_url = request.referer || ""
+        Rails.logger.debug("** NOT FOUND EXCEPTION: #{bang.pretty_inspect}")
         render "shared/not_found", :status => 404
       end
     end
@@ -187,53 +140,65 @@ Rails.application.config.after_initialize do
       page = params.fetch(:page, "1")
       page = Integer(page)
       page_size = Integer(params.fetch(:page_size, AppConfig[:pui_search_results_page_size]))
-      uri_prefix = "/repositories/#{params[:rid]}/archival_objects/"
+      uri_prefix = "/repositories/#{params[:rid]}/digital_objects/"
       r = Regexp.new("#{uri_prefix}(\\d+)")
       @digital_objs = []
       @ids = params.fetch(:ids, "").split(",")
       if @ids.blank?
+        #get an ordered list of all the archive records in the resource
         ordered_records = archivesspace.get_record("#{uri}/ordered_records").json.fetch("uris")
+        # strip out the 'ref' value to get a list by uri
         refs = ordered_records.map { |u| u.fetch("ref") }
-        dig_results = get_digital_archival_results(uri, refs.length)
-        dig_results = dig_results["docs"].map { |doc| doc["uri"] }
-        dig_results = dig_results.sort_by { |uri| refs.index(uri) }
+        # raise up the archival object link so we can sort on it
+        dig_results = get_resource_digital_objects(uri, refs.length)
+        dig_results["docs"].each do |doc|
+          Rails.logger.debug("is there a linked instance uris? #{doc["uri"]} #{doc["title"]} #{doc["linked_instance_uris"].pretty_inspect}")
+          if !doc["linked_instance_uris"].blank?
+            doc["linked_instance_uris"].each do |link|
+              if refs.include?(link)
+                doc["ao_link"] = link
+                break
+              end
+            end
+          end
+        end
+        # sort the docs on the archival object link
+        dig_results = dig_results["docs"].sort_by { |r| refs.index(r[:ao_link]) }
+        # flatten to just uris
+        dig_results = dig_results.map { |doc| doc["uri"] }
+        # grab the ids
         @ids = dig_results.grep(r) { |u| r.match(u)[1] }
       end
       slice = @ids[(page - 1) * page_size, page_size]
-      search_uris = slice.map { |id| "id:\"#{uri_prefix}#{id}#pui\"" }.join(" OR ")
+      search_uris = slice.map { |id| "id:\"#{uri_prefix}#{id}\"" }.join(" OR ")
       begin
-        set_up_search(["archival_object"], [], { "resolve[]" => ["repository:id", "resource:id@compact_resource", "ancestors:id@compact_resource", "top_container_uri_u_sstr:id"] }, {}, search_uris)
+        set_up_search(["digital_object"], [], { "resolve[]" => ["repository:id", "resource:id@compact_resource", "ancestors:id@compact_resource"] }, {}, search_uris)
         @results = archivesspace.search(@query, 1, @criteria)
       rescue Exception => error
         flash[:error] = I18n.t("errors.unexpected_error")
         redirect_back(fallback_location: "/") and return
       end
       process_results(@results["results"], false)
+      # sort by the ordered ao records
       @digital_objs = @results.records.sort_by { |res| slice.index(r.match(res.uri)[1]) }
-      @digital_objs.each do |result|
-        result["json"]["atdig"] = process_digital_instance(result["json"]["instances"])
-      end
       @pager = Pager.new("/repositories/#{params[:rid]}/resources/#{params[:id]}/digital_only", page, ((@ids.length % page_size == 0) ? @ids.length / page_size : (@ids.length / page_size) + 1))
     end
   end
 
-  # add check for digital objects, modified repo name for request
-
+  # add check for digital objects
   ResultInfo.module_eval do
     def fill_request_info
       @request = @result.request_item
       # looking for digital objects goes here
       begin
-        Rails.logger.debug("digital count? #{@request.request_uri}")
-        @digital_count = get_digital_archival_results(@request.request_uri)["numFound"] || 0
+        @digital_count = get_resource_digital_objects(@request.request_uri, 1)["numFound"] || 0
         # we may have digital objects at the resource level
-        results = get_resource_digital(@request.request_uri)
-        @digital_count = @digital_count + (results["numFound"] || 0)
+        #     results = get_resource_level_digital(@request.request_uri)
+        #    @digital_count = @digital_count + (results["numFound"] || 0)
       rescue Exception => boom
         STDERR.puts "Error getting digital object count for #{@request.request_uri}: #{boom}"
         @has_digital = false
       end
-      @long_repo_name = get_long_repo(@request)
       if @result.primary_type == "resource"
         resource = @result
       else @result.primary_type == "resource"
@@ -244,33 +209,25 @@ Rails.application.config.after_initialize do
       @request
     end
 
-    # we're going to invert this to get_long_repo, but not yet
-    def get_long_repo(request)
-      code = request["repo_code"]
-      long_nm = ""
-      if !code.blank?
-        code.downcase!
-        long_nm = I18n.t("repos.#{code}.long", :default => "")
-        #Rails.logger.debug("*** code #{code} yields: #{long_nm} ***")
+    # find all published digital objects for a resource EXCEPT at resource level
+    def get_resource_digital_objects(res_id, size = 1)
+      aos = get_aos_with_digital(res_id)
+      dig_uris = []
+      aos["docs"].each do |ao|
+        dig_uris += ao["digital_object_uris"]
       end
-      long_nm = request["repo_name"] || request["name"] if long_nm.blank?
-      long_nm
-    end
-
-    # this is going to be moved, but I'm putting it here for now
-    def get_digital_archival_results(res_id, size = 1)
-      solr_params = { "q" => 'digital_object_uris:[\"\" TO *] AND types:pui_archival_object AND publish:true',
-                      "fq" => "resource:\"#{res_id}\"",
+      dig_uris = dig_uris.map { |u| "\"#{u}\"" }
+      ids = "#{dig_uris.join(" OR ")}"
+      solr_params = { "q" => "id:cat(#{ids})",
+                      "fq" => "primary_type:digital_object AND publish:true",
                       "rows" => size,
-                      "fl" => "id,uri",
                       "wt" => "json" }
       solr_results = archivesspace.solr(solr_params)
       results = solr_results["response"]
-      #  {"numFound"=>1, "start"=>0, "numFoundExact"=>true, "docs"=>[{"id"=>"/repositories/2/archival_objects/5956#pui", "uri"=>"/repositories/2/archival_objects/5956"}]}
     end
 
     #types:pui_digital_object AND publish:true AND linked_instance_uris:"/repositories/2/resources/2"
-    def get_resource_digital(res_id, size = 1)
+    def get_resource_level_digital(res_id, size = 1)
       solr_params = { "q" => "types:pui_digital_object AND publish:true",
                       "fq" => "linked_instance_uris:\"#{res_id}\"",
                       "rows" => size,
@@ -279,6 +236,15 @@ Rails.application.config.after_initialize do
 
       solr_results = archivesspace.solr(solr_params)
       solr_results["response"]
+    end
+
+    def get_aos_with_digital(res_id)
+      solr_params = { "q" => 'digital_object_uris:[\"\" TO *] AND types:pui_archival_object AND publish:true',
+                      "fq" => "resource:\"#{res_id}\"",
+                      "fl" => "id,uri, digital_object_uris",
+                      "wt" => "json" }
+      solr_results = archivesspace.solr(solr_params)
+      results = solr_results["response"]
     end
   end
   #

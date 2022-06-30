@@ -1,46 +1,76 @@
-<a name="main" title="<%= t('internal_links.main') %>"></a>
+<% ao_ref = nil
+  breadcrumbs = nil
+  ao = nil
+  resource_uri = nil
+  if @result.instance_of?(DigitalObject)
+    @result.linked_instances.each do |inst|
+      if inst.class.name == "Array" && (inst[0].include?("archival_objects") || inst[0].include?("resources"))
+        ao_ref = inst[0]
+        ao = inst[1]
+        if (ao.instance_of?(ArchivalObject) || ao.instance_of?(Resource)) && !ao.breadcrumb.blank?
+          breadcrumbs = ao.breadcrumb
+          last = breadcrumbs.length - 1
+          if breadcrumbs[last][:uri].blank?
+            breadcrumbs[last][:uri] = ao_ref
+          end
+          if breadcrumbs[0][:type] == "resource"
+            resource_uri = breadcrumbs[0][:uri]
+          end
+        end
+        break
+      end
+    end
+    if !breadcrumbs.blank?
+      @context = breadcrumbs
+    end
+  end
+  heading_text = t("cont_arr")
+  if @result.instance_of?(DigitalObject)
+    root_node = resource_uri
+    current_node = ao_ref
+  else
+    root_node = @result.root_node_uri
+    current_node = @result.uri
+  end
+  do_sidebar = !root_node.blank? %>
+<a name="main" title="<%= t("internal_links.main") %>"></a>
 <div id="main-content" class="row">
   <div class="row" id="info_row">
     <div class="information col-sm-7">
-      <%= render partial: 'shared/id', locals: {:result => @result} %>
+      <%= render partial: "shared/id", locals: { :result => @result } %>
     </div>
     <div class="page_actions col-sm-5 right">
-    <%= render partial: 'shared/page_actions', locals: {:record => @result, :title => @result.display_string, :url => request.fullpath, :cite => @result.cite } %>
+    <%= render partial: "shared/page_actions", locals: { :record => @result, :title => @result.display_string, :url => request.fullpath, :cite => @result.cite } %>
     </div>
   </div>
   <div class="row col-sm-12">
-     <%= render partial: 'shared/result_head', locals: {:result => @result,  :props => { :full => true}} %>
+     <%= render partial: "shared/result_head", locals: { :result => @result, :props => { :full => true } } %>
   </div>
   <div class="row col-sm-12">
-     <%= render partial: 'shared/breadcrumbs' %>
+     <%= render partial: "shared/breadcrumbs" %>
   </div>
 </div>
-<% do_sidebar = !@result.instance_of?(DigitalObject) || @has_children %>
+
   <div class="row" id="notes_row">
-   <div class="col-sm-9 <%= 'col-sm-push-3' if do_sidebar %>">
-    <% if  defined?(comp_id) && !comp_id && !@result['json']['ref_id'].blank? %>
-      <span class='ref_id'>[<%=  t('archival_object._public.header.ref_id') %>: <%= @result['json']['ref_id'] %>]</span>
+   <div class="col-sm-9 <%= "col-sm-push-3" if do_sidebar %>">
+    <% if defined?(comp_id) && !comp_id && !@result["json"]["ref_id"].blank? %>
+      <span class='ref_id'>[<%= t("archival_object._public.header.ref_id") %>: <%= @result["json"]["ref_id"] %>]</span>
     <% end %>
-    <%= render partial: 'shared/digital', locals: {:dig_objs => @dig} %>
+    <%= render partial: "shared/digital", locals: { :dig_objs => @dig } %>
 
-    <%= render partial: 'shared/record_innards' %>
+    <%= render partial: "shared/record_innards" %>
    </div>
-
+<% Rails.logger.debug("do sidebar? #{do_sidebar} root_node: #{root_node} current_node: #{current_node}") %>
    <% if do_sidebar %>
     <div id="sidebar" class="sidebar sidebar-container col-sm-3 col-sm-pull-9 resizable-sidebar">
-      <%=  render partial: 'shared/search_box', :locals=> {:search_url =>  app_prefix("#{@result['resource']}/search") } %>
-      <%
-        if @result.kind_of?(DigitalObject)
-          heading_text = t('dig_cont_arr')
-        else
-          heading_text = t('cont_arr')
-        end
-      %>
-      <%= render partial: 'shared/children_tree', :locals => {:heading_text => heading_text, :root_node_uri => @result.root_node_uri, :current_node_uri => @result.uri} %>
+      <%= render partial: "shared/search_box", :locals => { :search_url => app_prefix("#{@result["resource"]}/search") } %>
+      
+      <%= render partial: "shared/children_tree", :locals => { :heading_text => heading_text, :root_node_uri => root_node, :current_node_uri => current_node } %>
+      
     </div>
    <% end %>
   </div>
- <%= render partial: 'shared/modal_actions' %>
+ <%= render partial: "shared/modal_actions" %>
 </div>
 
 <%= javascript_include_tag "#{@base_url}/assets/sidebar-expandbuttons.js" %>
