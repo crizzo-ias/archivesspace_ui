@@ -152,7 +152,6 @@ Rails.application.config.after_initialize do
         # raise up the archival object link so we can sort on it
         dig_results = get_resource_digital_objects(uri, refs.length)
         dig_results["docs"].each do |doc|
-          Rails.logger.debug("is there a linked instance uris? #{doc["uri"]} #{doc["title"]} #{doc["linked_instance_uris"].pretty_inspect}")
           if !doc["linked_instance_uris"].blank?
             doc["linked_instance_uris"].each do |link|
               if refs.include?(link)
@@ -172,7 +171,7 @@ Rails.application.config.after_initialize do
       slice = @ids[(page - 1) * page_size, page_size]
       search_uris = slice.map { |id| "id:\"#{uri_prefix}#{id}\"" }.join(" OR ")
       begin
-        set_up_search(["digital_object"], [], { "resolve[]" => ["repository:id", "resource:id@compact_resource", "ancestors:id@compact_resource"] }, {}, search_uris)
+        set_up_search(["digital_object"], [], { "resolve[]" => ["resource:id@compact_resource", "ancestors:id@compact_resource", "linked_instance_uris:id@compact_resource"] }, {}, search_uris)
         @results = archivesspace.search(@query, 1, @criteria)
       rescue Exception => error
         flash[:error] = I18n.t("errors.unexpected_error")

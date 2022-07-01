@@ -60,7 +60,6 @@
 
     <%= render partial: "shared/record_innards" %>
    </div>
-<% Rails.logger.debug("do sidebar? #{do_sidebar} root_node: #{root_node} current_node: #{current_node}") %>
    <% if do_sidebar %>
     <div id="sidebar" class="sidebar sidebar-container col-sm-3 col-sm-pull-9 resizable-sidebar">
       <%= render partial: "shared/search_box", :locals => { :search_url => app_prefix("#{@result["resource"]}/search") } %>

@@ -1,37 +1,37 @@
-<a name="main" title="<%= t('internal_links.main') %>"></a>
+<a name="main" title="<%= t("internal_links.main") %>"></a>
 <div id="main-content" class="row resources">
   <div class="row" id="info_row">
     <div class="information col-sm-6">
-      <%= render partial: 'shared/id', locals: {:result => @result, :props => { :full => true} } %>
+      <%= render partial: "shared/id", locals: { :result => @result, :props => { :full => true } } %>
     </div>
     <div class="page_actions col-sm-6 right">
-    <%= render partial: 'shared/page_actions', locals: {:record => @result, :title =>  @result.display_string, :url => request.fullpath, :cite => @result.cite } %>
+    <%= render partial: "shared/page_actions", locals: { :record => @result, :title => @result.display_string, :url => request.fullpath, :cite => @result.cite } %>
     </div>
   </div>
     <div class="row col-sm-12">
-     <%= render partial: 'shared/result_head', locals: {:result => @result,  :props => { :full => true}} %>
+     <%= render partial: "shared/result_head", locals: { :result => @result, :props => { :full => true } } %>
   </div>
   <div class="row col-sm-12">
-     <%= render partial: 'shared/breadcrumbs' %>
+     <%= render partial: "shared/breadcrumbs" %>
   </div>
 </div>
 
 <div class="row" id="digital">
 
   <div class="col-sm-push-3 col-sm-9">
-    <%= render partial: 'resources/resource_alltabs' %>
-     <%= render partial: 'shared/paging_dig_only', locals: {:pager => @pager, :ids => @ids} %>
+    <%= render partial: "resources/resource_alltabs" %>
+     <%= render partial: "shared/paging_dig_only", locals: { :pager => @pager, :ids => @ids } %>
      <% @digital_objs.each do |result| %>
-      <%= render partial: 'shared/dig_result', locals: {:result => result, :props => {:full => false, :no_repo => true, :no_coll => true}} %>
+      <%= render partial: "shared/result", locals: { :result => result, :props => { :full => false, :no_repo => true, :no_coll => true } } %>
      <% end %>
-    <%= render partial: 'shared/paging_dig_only', locals: {:pager => @pager, :ids => @ids} %>
+    <%= render partial: "shared/paging_dig_only", locals: { :pager => @pager, :ids => @ids } %>
   </div>
 
  <div id="sidebar" class="col-sm-3 col-sm-pull-9 sidebar sidebar-container resizable-sidebar" <% unless @has_children %>style="display: none"<% end %>>
  
-     <%= render partial: 'shared/children_tree', :locals => {:heading_text => t('cont_arr'), :root_node_uri => @result.uri, :current_node_uri => @result.uri} %>
+     <%= render partial: "shared/children_tree", :locals => { :heading_text => t("cont_arr"), :root_node_uri => @result.uri, :current_node_uri => @result.uri } %>
   </div>
 </div>
 
-<%= render partial: 'shared/modal_actions' %>
-<%= javascript_include_tag "#{@base_url}/assets/harvard-sidebar-expandbuttons.js" %>
+<%= render partial: "shared/modal_actions" %>
+<%= javascript_include_tag "#{@base_url}/assets/sidebar-expandbuttons.js" %>
