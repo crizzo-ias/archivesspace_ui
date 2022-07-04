@@ -116,7 +116,8 @@ Rails.application.config.after_initialize do
       uri = "/repositories/#{params[:rid]}/resources/#{params[:id]}"
       begin
         @criteria = {}
-        @criteria["resolve[]"] = ["repository:id", "resource:id@compact_resource", "top_container_uri_u_sstr:id", "related_accession_uris:id", "digital_object_uris:id"]
+        @criteria["resolve[]"] = ["repository:id", "resource:id@compact_resource", "related_accession_uris:id", "digital_object_uris:id"]
+        @has_children = false
         tree_root = archivesspace.get_raw_record(uri + "/tree/root") rescue nil
         @has_children = tree_root && tree_root["child_count"] > 0
         @has_containers = false
@@ -171,12 +172,15 @@ Rails.application.config.after_initialize do
       slice = @ids[(page - 1) * page_size, page_size]
       search_uris = slice.map { |id| "id:\"#{uri_prefix}#{id}\"" }.join(" OR ")
       begin
-        set_up_search(["digital_object"], [], { "resolve[]" => ["resource:id@compact_resource", "ancestors:id@compact_resource", "linked_instance_uris:id@compact_resource"] }, {}, search_uris)
+        set_up_search(["digital_object"], [], { "resolve[]" => ["resource:id@compact_resource", "ancestors:id@compact_resource"] }, {}, search_uris)
         @results = archivesspace.search(@query, 1, @criteria)
       rescue Exception => error
         flash[:error] = I18n.t("errors.unexpected_error")
+        Rails.logger.debug("UNEXPECTED ERROR!: #{error.pretty_inspect}")
+        Rails.logger.debug("BACKTRACE: #{error.backtrace.pretty_inspect}")
         redirect_back(fallback_location: "/") and return
       end
+
       process_results(@results["results"], false)
       # sort by the ordered ao records
       @digital_objs = @results.records.sort_by { |res| slice.index(r.match(res.uri)[1]) }
@@ -212,13 +216,6 @@ Rails.application.config.after_initialize do
         STDERR.puts "Error getting digital object count for #{@request.request_uri}: #{boom}"
         @has_digital = false
       end
-      if @result.primary_type == "resource"
-        resource = @result
-      else @result.primary_type == "resource"
-        resource_uri = @result.breadcrumb.map { |c| c[:uri] if c[:type] == "resource" }.compact
-        unless resource_uri.blank?
-        resource = archivesspace.get_record(resource_uri, {})
-      end       end
       @request
     end
 
