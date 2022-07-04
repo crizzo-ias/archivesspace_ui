@@ -186,6 +186,20 @@ Rails.application.config.after_initialize do
 
   # add check for digital objects
   ResultInfo.module_eval do
+    alias_method :core_process_digital, :process_digital
+
+    # we want to use the the title/display name on the clickable thumb button for a external object, even if there isn't a thumbnail.  Currently commented out until there's agreement from the client
+    # def process_digital(json)
+    #   dig_obj = core_process_digital(json)
+    #   if !dig_obj.blank?
+    #     caption = json.fetch(json["display_string"], json["title"])
+    #     caption = "" if caption.blank?
+    #     caption = CGI::escapeHTML(strip_mixed_content(caption))
+    #     dig_obj[0]["caption"] = caption
+    #   end
+    #   dig_obj
+    # end
+
     def fill_request_info
       @request = @result.request_item
       # looking for digital objects goes here
