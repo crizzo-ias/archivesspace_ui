@@ -1,0 +1,83 @@
+/* colors and icons for your institution */
+
+/* ias per pantone 
+https://qconv.com/en/convert-pantone-to-hex
+primary 653M 
+*/
+$ias_blue: #03315C;
+/* secondary greige 5807m */
+/* $ias_greige: #E9f0ce; */
+$ias_greige: #f2f2dc;
+/*     lighter blue 659M */
+$ias_lightblue: #055299;
+/* lighter highlight 131M */
+$ias_light_highlight: #f2d997;
+/* darker highligh 7413M #	*/
+$ias_dark_highlight: #E8BB45;
+/* greenish 7496M */
+$ias_greenish: #5f9e00;
+/* greyish 7530M */ 
+$ias_greyish: #ADA089;
+
+/*
+blue gradient:  https://coolors.co/gradient-maker/004ecc-5ca6ff-f7c2e6?position=0,100,100&opacity=100,100,100&type=linear&rotation=90
+
+CSS: background: hsla(217, 100%, 40%, 1);
+background: linear-gradient(90deg, hsla(217, 100%, 40%, 1) 0%, hsla(213, 100%, 68%, 1) 100%, hsla(319, 77%, 86%, 1) 100%);
+background: -moz-linear-gradient(90deg, hsla(217, 100%, 40%, 1) 0%, hsla(213, 100%, 68%, 1) 100%, hsla(319, 77%, 86%, 1) 100%);
+background: -webkit-linear-gradient(90deg, hsla(217, 100%, 40%, 1) 0%, hsla(213, 100%, 68%, 1) 100%, hsla(319, 77%, 86%, 1) 100%);
+filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#004ECC", endColorstr="#5CA6FF", GradientType=1 );
+     */
+
+$black: #00171f;
+$darkest: #00171f;
+$white: #ffffff;
+$darkblue: #1e1e1e;
+/* $midblue: #007eaf; */
+$midblue: $ias_blue;
+/* $lightblue: #34b6e4; */
+$lightblue: $ias_lightblue;
+$darkshade: #8996A0;
+$shade: #6c6c6c;
+/*$lightshade: #F3F3F1; */
+$lightshade: $ias_greige;
+/* $highlight: #f8c21c; */
+$highlight: $ias_light_highlight;
+$dark_against_shade: $black;  /* for contrast against lightshade */
+/* this is where you can change colors for your institution */
+
+$primary-color: $black;
+$secondary-color: $black;
+$accent-color: $black;
+$border-accent: $darkblue;
+$border: $shade;
+$image-background: $shade;
+$row-background: #f3f3f1;
+$button-background: $lightblue;
+$alt-button-background: $lightshade;
+$alt-button-color: $darkshade;
+$light-neutral: $lightshade;
+$breadcrumb-link: $darkblue;
+
+/* this is for the top horizontal nav bar */
+$nvBgDefault      : $light-neutral;
+$nvBgHighlight    : $light-neutral;
+$nvColDefault     : $dark_against_shade;
+$nvColHighlight   : $border-accent;
+
+
+
+$collection-color: $black;
+$subject-color: $black;
+$container-color: $black;
+$agent-color: $black;
+$record-color: $black;
+$repository-color: $black;
+$classification-color: $black;
+$accession-color: $collection-color;
+$digital-object-color: $collection-color;
+$archival-object-color: $black;
+$folder-color: $black;
+
+
+

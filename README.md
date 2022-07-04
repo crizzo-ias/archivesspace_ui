@@ -1,3 +1,1 @@
-# archivesspace_ui
-
-The customizations needed by IAS for the ArchivesSpace Public User Interface
+﻿﻿﻿# archivesspace_uiThe customizations needed by IAS for the ArchivesSpace Public User Interface## Initial cut:- change color themes- remove repositories from browse- remove repository in breadcrumbs- change internal navigation look- move collection organization in Resource to left side
