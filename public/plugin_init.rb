@@ -16,10 +16,12 @@ AppConfig[:pui_page_actions_cite] = true
 AppConfig[:pui_page_actions_request] = true
 AppConfig[:pui_page_actions_print] = true
 
+
 # read in routes
 my_routes = File.join(File.dirname(__FILE__), "routes.rb")
 
 Plugins.extend_aspace_routes(my_routes)
+
 
 ## OVERRIDE VARIOUS METHODS/ ADD NEW METHODS
 Rails.application.config.after_initialize do
