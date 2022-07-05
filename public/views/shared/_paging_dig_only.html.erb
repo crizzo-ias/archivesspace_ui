@@ -1,0 +1,39 @@
+<% # this is used for digital only display, in order to submit as a POST rather than a GET %>
+<% # expects pager, ids as locals %>
+
+<% if pager.pages.last > 1 %>
+<div id="paging">
+  <form class='digital_page' action='<%= app_prefix(pager.link) %>' method='post'>
+    <input type='hidden' name='ids' value='<%= ids.join(",") %>' />
+    <input type='hidden' name='page' />
+  <ul class="pagination">
+    <% if pager.need_prev %>
+       <% if pager.pages.first == 2 %>
+         <li><a href="javascript:digital_results(this,1);">1</a></li>
+       <% else %>
+         <li class="previous"><a href="#"><span aria-hidden="true">&larr;</span>Previous</a></li>
+       <% end %>
+       <% if pager.pages.first > 2 %>
+         <li><a href="#">1</a></li>
+         <li class='dots'><a href="" style="pointer-events: none;">...</a></li>
+       <% end %>
+    <% end %>
+    <% pager.pages.each do |page| %>
+      <% if page == pager.page %>
+        <li class="active"><a href="#"><%= page %></a></li>
+      <% else %>
+        <li><a href="#"><%= page %></a></li>
+      <% end %>
+    <% end %>
+    <% if pager.need_last %>
+       <li class='dots'><a href="" style="pointer-events: none;">...</a></li>
+       <li><a href="#"><%= pager.last_page %></a></li>
+    <% end %>
+    <% if pager.need_next %>
+      <li class="next"><a href="javascript:digital_results(this,<%= pager.next %>)"><span aria-hidden="true">&rarr;</span>Next</a></li>
+    <% end %>
+</ul>
+</form>
+</div>
+
+<% end %>
