@@ -16,12 +16,10 @@ AppConfig[:pui_page_actions_cite] = true
 AppConfig[:pui_page_actions_request] = true
 AppConfig[:pui_page_actions_print] = true
 
-
 # read in routes
 my_routes = File.join(File.dirname(__FILE__), "routes.rb")
 
 Plugins.extend_aspace_routes(my_routes)
-
 
 ## OVERRIDE VARIOUS METHODS/ ADD NEW METHODS
 Rails.application.config.after_initialize do
@@ -110,6 +108,17 @@ Rails.application.config.after_initialize do
         default_types.delete("subject")
       end
       core_set_up_advanced_search(default_types, default_facets, default_search_opts, params)
+    end
+  end
+
+  # Override decision to fetch identifier
+
+  ViewHelper.module_eval do
+    alias_method :core_display_component_id, :display_component_id
+
+    def display_component_id(record, infinite_item)
+      return nil if record.class.name != "Resource"
+      core_display_component_id(record, infinite_item)
     end
   end
   # add a digital only action to the resources controller

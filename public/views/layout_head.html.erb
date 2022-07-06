@@ -1,21 +1,18 @@
-<!-- IAS VERSION 1.6 -->
+<!-- IAS VERSION 1.7 -->
 <link rel="stylesheet" href="https://use.typekit.net/qtw0fed.css">
 <%= stylesheet_link_tag "#{@base_url}/assets/ias_application.css", media: :all %>
 
 
 <%= stylesheet_link_tag "#{@base_url}/assets/ias.css", media: :all %>
 
-<% 
-# re-order the MAIN_MENU array so that classifications come right after resources
-#  This only happens once; otherwise the 'if' fails
-
-if $MAIN_MENU.last[0] == '/classifications'
-    inx = nil
-    $MAIN_MENU.each_index {|i| if $MAIN_MENU[i][0] == '/repositories/resources' then inx = i end}
-    if !inx.nil?
-      entry = $MAIN_MENU.pop
-      $MAIN_MENU.insert(inx + 1, entry)
-    end
-  end
-  
-%>
+<% # re-order the MAIN_MENU array so that classifications come right after resources
+   #  This only happens once; otherwise the 'if' fails
+   
+   if $MAIN_MENU.last[0] == "/classifications"
+     inx = nil
+     $MAIN_MENU.each_index { |i| if $MAIN_MENU[i][0] == "/repositories/resources" then inx = i end }
+     if !inx.nil?
+       entry = $MAIN_MENU.pop
+       $MAIN_MENU.insert(inx + 1, entry)
+     end
+   end %>
