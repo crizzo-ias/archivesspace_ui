@@ -426,6 +426,7 @@ ul.navbar-nav {
 }
 
 @media (max-width: 991px) {
+ 
   .search_row_container, .search-filter-row {
     margin: auto;
   }
@@ -445,6 +446,9 @@ ul.navbar-nav {
 }
 
 @media (max-width: 767px) {
+  ul.navbar-nav {
+    margin-left: 10px;
+  }
   .form-control.search-field.repeats {
     max-width: 100%;
     width: 100%;
@@ -468,6 +472,9 @@ ul.navbar-nav {
   #submit_search.inline-search-btn {
     border-radius: 4px;
   }
+  .container-fluid > .navbar-collapse {
+    margin-right: -15px;
+    margin-left: -100px; }
 }
 
 @media (max-width: 500px) {
@@ -660,7 +667,9 @@ i.fa-plus, i.fa-minus {
 .fa-search {
    color: #E8BB45;
 }
-
+.nav-search {
+    color: #E8BB45;
+}
 .btn-primary {
     color: #fff;
     background-color: #1e1e1e;
