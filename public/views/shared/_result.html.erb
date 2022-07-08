@@ -24,7 +24,9 @@
            <% end %>
           </div>
          <% end %>
-       
+       <% if result.class.name == "DigitalObject" %>
+       <%= render partial: "shared/dig_notes", locals: { :result => result } %>
+       <% end %>
 
 
 

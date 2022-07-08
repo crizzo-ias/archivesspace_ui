@@ -1,0 +1,24 @@
+<% # get digital notes expects result as an argument %>
+<!-- digital notes -->
+<%
+if !result.json["notes"].blank?  
+    begin 
+        notes = result.json["notes"]
+        notes.each do |note| 
+            if note["type"] == "summary" && !note["content"].blank? %>
+            <div class=" abstract single_note"><span class='inline-label'><%= note["label"] || "Summary" %> </span>  
+                <% content = note["content"].join("<br/> ") 
+                if content.length > AppConfig[:abstract_note_length] 
+                    truncated_note = content[0..AppConfig[:abstract_note_length] - 1] 
+                    end_index = truncated_note.rindex(" ") || AppConfig[:abstract_note_length] - 1 %>
+                    <%= (strip_tags(truncated_note[0..end_index - 1]) + "...").html_safe %> 
+            <%  else %>
+                    <%= content.html_safe  %>
+            <% end %>
+            </div> 
+        <%  end 
+    rescue Exception => bang 
+        Rails.logger.debug("GOT EXCEPTION: #{bang.pretty_inspect} with result #{result.json['notes'].pretty_inspect}") 
+    end 
+end 
+end %>
