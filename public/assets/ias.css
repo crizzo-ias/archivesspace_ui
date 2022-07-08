@@ -346,9 +346,7 @@ h1 > span.title {
   background-color: transparent;
   margin:0;
 }
-ul.navbar-nav {
-  margin-left: -16rem;
-}
+
 .navbar-nav > li {
   padding-top: 1rem;
   padding-left: 1rem;
@@ -486,6 +484,13 @@ ul.navbar-nav {
   }
   .form-control.search-field.repeats {
     width: 75%;
+  }
+  ul.navbar-nav {
+    margin-left: -16rem;
+  }
+  .navbar-nav > li {
+    padding-left: 0;
+    text-align: left;
   }
 }
 

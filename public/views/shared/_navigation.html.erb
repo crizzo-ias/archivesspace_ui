@@ -12,7 +12,6 @@
         <ul class="nav nav navbar-nav">
           <% # TODO: add class="active" if we're on that page %>
           <% $MAIN_MENU.each do |link| %>
-          <% Rails.logger.debug("link: #{link}") %>
             <li><a href="<%= app_prefix(link[0]) %>"><%= t(link[1]) %></a></li>
           <% end %>
           <% unless AppConfig[:pui_hide][:search_tab] %>
