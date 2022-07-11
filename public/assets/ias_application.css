@@ -87,35 +87,13 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#004ECC", en
 /* for contrast against lightshade */
 /* this is where you can change colors for your institution */
 /* this is for the top horizontal nav bar */
-@font-face {
-  font-family: 'Gill-Sans';
-  src: url("/assets/Gill_Sans/gillsans.otf") format("opentype");
-  font-weight: normal;
-  font-style: normal; }
 
-@font-face {
-  font-family: 'Gill-Sans';
-  src: url("/assets/Gill_Sans/gillsansitalic.otf") format("opentype");
-  font-weight: normal;
-  font-style: italic; }
-
-@font-face {
-  font-family: 'Gill-Sans';
-  src: url("/assets/Gill_Sans/gillsansbold.otf") format("opentype");
-  font-weight: bold;
-  font-style: normal; }
-
-@font-face {
-  font-family: 'Gill-Sans';
-  src: url("/assets/Gill_Sans/gillsansbolditalic.otf") format("opentype");
-  font-weight: bold;
-  font-style: italic; }
 
 /* we only serif on special occasions */
 /* we only use this for special cases */
 /* Bootstrap icons only */
 body {
-  font-family: "Gill-Sans", sans-serif; }
+  font-family: "gill-sans-nova", sans-serif; }
 
 /*!
  * Bootstrap v3.4.1 (https://getbootstrap.com/)
@@ -1175,7 +1153,7 @@ html {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
 
 body {
-  font-family: "Gill-Sans", sans-serif;
+  font-family: "gill-sans-nova", sans-serif;
   font-size: 14px;
   line-height: 1.42857;
   color: #00171f;
@@ -5289,7 +5267,7 @@ button.close {
   position: absolute;
   z-index: 1070;
   display: block;
-  font-family: "Gill-Sans", sans-serif;
+  font-family: "gill-sans-nova", sans-serif;
   font-style: normal;
   font-weight: 400;
   line-height: 1.42857;
@@ -5394,7 +5372,7 @@ button.close {
   display: none;
   max-width: 276px;
   padding: 1px;
-  font-family: "Gill-Sans", sans-serif;
+  font-family: "gill-sans-nova", sans-serif;
   font-style: normal;
   font-weight: 400;
   line-height: 1.42857;
@@ -8234,7 +8212,7 @@ button.close {
   clip: auto; }
 
 html {
-  font-family: "Gill-Sans", sans-serif;
+  font-family: "gill-sans-nova", sans-serif;
   font-size: 100%; }
 
 a {
@@ -8487,7 +8465,7 @@ a img {
   float: left; }
   .identifier .id-label {
     float: left;
-    font-family: "Gill-Sans", sans-serif;
+    font-family: "gill-sans-nova", sans-serif;
     font-weight: bold; }
 
 .dates-is-single-date {
@@ -8539,7 +8517,7 @@ a:hover {
   text-decoration: underline; }
 
 h1, .h1 {
-  font-family: "Gill-Sans", sans-serif;
+  font-family: "gill-sans-nova", sans-serif;
   font-size: 1.875rem;
   font-weight: bold;
   color: #00171f; }
@@ -8553,20 +8531,20 @@ h1, .h1 {
     font-size: 1.375rem; } }
 
 h2, .h2 {
-  font-family: "Gill-Sans", sans-serif;
+  font-family: "gill-sans-nova", sans-serif;
   font-size: 1.5rem;
   font-weight: bold;
   color: #00171f; }
 
 h3, .h3 {
-  font-family: "Gill-Sans", sans-serif;
+  font-family: "gill-sans-nova", sans-serif;
   font-size: 1.25rem;
   font-weight: bold;
   color: #00171f; }
 
 h4, .h4 {
   font-size: 1.125rem;
-  font-family: "Gill-Sans", sans-serif; }
+  font-family: "gill-sans-nova", sans-serif; }
 
 h5, .h5 {
   font-weight: bold; }
@@ -8849,7 +8827,7 @@ span.required {
 
 .inline-label {
   font-weight: bold;
-  font-family: "Gill-Sans", sans-serif; }
+  font-family: "gill-sans-nova", sans-serif; }
 
 .clear {
   clear: both; }
@@ -8857,7 +8835,7 @@ span.required {
 span.head {
   display: block;
   font-weight: bold;
-  font-family: "Gill-Sans", sans-serif; }
+  font-family: "gill-sans-nova", sans-serif; }
 
 .breadcrumb > li + li::before {
   color: #00171f;
@@ -8996,7 +8974,7 @@ span.head {
 
 .record-type-badge {
   padding: 0.25rem;
-  font-family: "Gill-Sans", sans-serif;
+  font-family: "gill-sans-nova", sans-serif;
   font-weight: bold; }
   .record-type-badge i {
     margin-right: 0.125rem; }
