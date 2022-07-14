@@ -262,6 +262,9 @@ a.accordion-toggle.collapsed:after {
     border-color: #ffffff;
     overflow-y: unset;
 }
+.collapse.in  .navbar-nav > li {
+  margin-left: 1rem;
+} 
 
 /* end of accordion styling */
 
@@ -477,15 +480,9 @@ h1 > span.title {
   .form-control.search-field.repeats {
     width: 75%;
   }
-  /* ul.navbar-nav {
-    margin-left: -16rem;
-  }
-  .navbar-nav > li {
-    padding-left: 0;
-    text-align: left;
-  } */
-}
 
+ 
+}
 .search-down-caret {
   color: black;
 }
