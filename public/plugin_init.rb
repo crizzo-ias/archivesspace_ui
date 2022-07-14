@@ -6,7 +6,7 @@ AppConfig[:pui_hide][:repositories] = true
 AppConfig[:pui_hide][:subjects] = false
 AppConfig[:pui_hide][:agents] = false
 AppConfig[:pui_hide][:accessions] = true
-AppConfig[:pui_hide][:classifications] = false
+AppConfig[:pui_hide][:classifications] = true
 AppConfig[:pui_branding_img] = "/assets/ias.png"
 AppConfig[:pui_branding_img_alt_text] = "Institute for Advanced Study"
 AppConfig[:pui_page_actions_print] = true
@@ -85,21 +85,7 @@ Rails.application.config.after_initialize do
 
   # Override some assumed defaults in the core code
   Searchable.module_eval do
-    alias_method :core_set_up_and_run_search, :set_up_and_run_search
     alias_method :core_set_up_advanced_search, :set_up_advanced_search
-    alias_method :core_process_search_results, :process_search_results
-
-    # override the resources#index faceting
-    def set_up_and_run_search(default_types = [], default_facets = [], default_search_opts = {}, params = {})
-      if default_types.length == 1 && default_types[0] == "resource"
-        default_facets = %w{subjects}
-      end
-      unless default_types.blank?
-        default_types.delete("agent")
-        default_types.delete("subject")
-      end
-      core_set_up_and_run_search(default_types, default_facets, default_search_opts, params)
-    end
 
     # we don't want to see agents or subjects in the search results, only in facets
     def set_up_advanced_search(default_types = [], default_facets = [], default_search_opts = {}, params = {})
@@ -220,9 +206,6 @@ Rails.application.config.after_initialize do
       # looking for digital objects goes here
       begin
         @digital_count = get_resource_digital_objects(@request.request_uri, 1)["numFound"] || 0
-        # we may have digital objects at the resource level
-        #     results = get_resource_level_digital(@request.request_uri)
-        #    @digital_count = @digital_count + (results["numFound"] || 0)
       rescue Exception => boom
         STDERR.puts "Error getting digital object count for #{@request.request_uri}: #{boom}"
         @has_digital = false
