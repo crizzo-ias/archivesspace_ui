@@ -260,6 +260,7 @@ a.accordion-toggle.collapsed:after {
 .collapse.in {
     border: 0;
     border-color: #ffffff;
+    overflow-y: unset;
 }
 
 /* end of accordion styling */
@@ -336,36 +337,22 @@ h1 > span.title {
 
 .navbar-default .navbar-nav > li > a {
   color: #FFFFFF;
-  /* padding-top: 0;
-  padding-bottom: 1rem;
-  padding-right: 10px;
-  padding-left: 10px; */
   border-right: 1px solid #055299;
   font-size: inherit !important;
-  /*background-color: #055299; */
   background-color: transparent;
   margin:0;
 }
 
-/* .navbar-nav > li {
-  padding-top: 1rem;
-  padding-left: 1rem;
-} */
+
 .navbar-default .navbar-nav > li:hover {
   background-color: #03315C;
 }
-/* 
-.navbar-default .navbar-nav > li:last-child > a {
-  border:0;
-  padding-right: 1rem;
-} */
 
 .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
   color: #f2d997;
   text-decoration: none;
   background-color: transparent;
- /* background-color:  #03315c; */
-} */
+} 
 
 .search-keyword {
   border-radius: 0;
@@ -1264,10 +1251,7 @@ form.form-inline #from_year0, form.form-inline #to_year0 {
     text-align: center;
   }
 
-  /* .nav.navbar-nav {
-    text-align: center;
-  } */
-
+  
   .resources .full-chars {
     margin-top: 1em;
     text-align: center;
@@ -1295,10 +1279,7 @@ form.form-inline #from_year0, form.form-inline #to_year0 {
 }
 
 @media screen and (max-width: 576px) {
-    /* .navbar-nav {
-	     margin: 0;
-    } */
-
+    
     .limit-field {
       width: 100% !important;
     }
