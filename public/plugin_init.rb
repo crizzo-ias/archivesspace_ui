@@ -129,7 +129,6 @@ Rails.application.config.after_initialize do
         @page_title = I18n.t("errors.error_404", :type => @type)
         @uri = uri
         @back_url = request.referer || ""
-        Rails.logger.debug("** NOT FOUND EXCEPTION: #{bang.pretty_inspect}")
         render "shared/not_found", :status => 404
       end
     end

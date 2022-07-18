@@ -1,5 +1,3 @@
-require "pp"  # temporary, she hopes!
-
 class ResourcesAddonsController < ApplicationController
   include ResultInfo
   helper_method :process_repo_info
@@ -44,8 +42,6 @@ class ResourcesAddonsController < ApplicationController
       redirect_to(uri)
       #     archivesspace.internal_request(uri)
     else
-      Rails.logger.debug("IN REDIRECT FROM REF: #{results.pretty_inspect}")
-      Rails.logger.debug("IN REDIRECT FROM REF: #{caller(0, 5).pretty_inspect}")
       render "shared/not_found", :status => 404
     end
   end
