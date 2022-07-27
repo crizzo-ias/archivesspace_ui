@@ -1,10 +1,10 @@
-<!-- IAS VERSION 1.8 -->
+<!-- IAS VERSION 1.9 -->
 <link rel="stylesheet" href="https://use.typekit.net/qtw0fed.css">
 <%= stylesheet_link_tag "#{@base_url}/assets/ias_application.css", media: :all %>
 
 
 <%= stylesheet_link_tag "#{@base_url}/assets/ias.css", media: :all %>
-
+<%= javascript_include_tag "#{@base_url}/assets/ias.js" %>
 <% # re-order the MAIN_MENU array so that classifications come right after resources
    #  This only happens once; otherwise the 'if' fails
    
