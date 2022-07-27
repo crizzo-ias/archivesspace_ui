@@ -6,7 +6,7 @@ $(function () {
     /* Per Bobbi Fox regarding a solution to a similar situation in the aspace-ead-xform plugin:
     this defer methodolgy is adapted from
     https://stackoverflow.com/questions/7486309/how-to-make-script-execution-wait-until-jquery-is-loaded
-    since the sidebar content loads *after* the javascript is loaded, we need to to this */
+    since the sidebar content loads *after* the javascript is loaded, we need to do this */
 
     function defer(method) {
         if ($("button.expandme").length > 0) {
