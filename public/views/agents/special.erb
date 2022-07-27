@@ -1,0 +1,14 @@
+<% # special test of agents %>
+<% docs = results["docs"] %>
+<h3>Special Agent Reporting</h3>
+<div>Number of published agents found: <%= pubcount %></div>
+<% if pubcount > 0 %>
+<h4> First few:</h4>
+<ul>
+<% docs.each do |doc| %>
+<li><%= doc["title"] %></li>
+<% end %>
+</ul>
+
+<% end %>
+<div> Number of unpublished agents: <%= unpubcount %></div>
