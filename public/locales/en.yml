@@ -103,7 +103,7 @@ en:
     _plural: Institutional Records
   digital_object:
     _public:
-       link: External link to digital material
+       link: View Digital Contents
        in_collection: "Contains digital material %{details} "
        details:
          _singular: (1 item)
@@ -125,7 +125,7 @@ en:
 
   enumerations:
     instance_instance_type:
-      digital_object: digital material
+      digital_object: View Digital Material
     archival_record_level:
       unspecified: Item
       untitled: Untitled
