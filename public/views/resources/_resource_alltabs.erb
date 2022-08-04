@@ -1,0 +1,13 @@
+<%# this is divergent from plain-vanilla PUI in that it's just divs, rather than a UL list. It excludes the
+original container inventory %>
+<div class="row nav-pills" id="tabs" >
+      <%= render partial: 'resources/resource_tab', locals: {:action => :show, :text => t('actions.collection_overview'),
+                                                             :enabled => true, :hidden => false } %>
+      <%= render partial: 'resources/resource_tab', locals: {:action => :infinite, :text => t('actions.hierarch'),
+                                                             :enabled => @has_children, :hidden => false } %>
+      <% dig_title = t('actions.digital_only')
+         dig_title = dig_title + " (#{@digital_count})" unless @digital_count == 0
+      %>
+     <%= render partial: 'resources/resource_tab', locals: {:action => :digital_only, :text => dig_title,
+                                                            :enabled => ( !@digital_count.blank? &&@digital_count > 0), :hidden => false} %>
+</div>

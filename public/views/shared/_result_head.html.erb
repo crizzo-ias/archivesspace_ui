@@ -1,0 +1,19 @@
+<%
+  got_dig = false
+  unless result['json']['instances'].blank?
+     result['json']['instances'].each do |instance|
+       got_dig = true unless instance['digital_object'].blank?
+     end
+  end
+%>
+
+
+<%= (props.fetch(:full,false)? '<h1 class="full-chars">' : '<h3>').html_safe %>
+  <% if !props.fetch(:full,false) %>
+    <a class="record-title" href="<%= app_prefix(result.uri) %>">  <%== result.display_string %></a>
+  <% else %>
+    <%== result.display_string %>
+  <% end %>
+  <% if got_dig %><span class='dig_flag' title="<%= t('views._shared.digital_flag_title') %>"><%= t('views._shared.digital_flag') %></span><% end %>
+<%= (props.fetch(:full,false)? '</h1>' : '</h3>').html_safe %>
+

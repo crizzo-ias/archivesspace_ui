@@ -1,0 +1,21 @@
+<% if result.level
+    if result.primary_type =~ /digital_object/
+      level = I18n.t("enumerations.digital_object_level.#{result.level}", :default => result.level)
+      badge_label = I18n.t("digital_object._public.badge_label", :level => level)
+    else
+      level = result.level == "otherlevel" ? result.other_level : result.level
+      badge_label = I18n.t("enumerations.archival_record_level.#{level}", :default => level)
+    end
+  else
+    badge_label = t("#{result.primary_type}._singular")
+  end %>
+
+ <div class="identifier">
+ <%  %>
+  <% comp_id = result.identifier %>
+   <span class="id-label"> <%= badge_label.upcase %> <% if result.container_summary_for_badge %> &mdash; <%= result.container_summary_for_badge %><% end %>
+     <% unless comp_id.blank? || result.primary_type !~ /resource/ %>
+       <%= t("search_sorting.identifier") %>:</span>&#160;<span class="component"><%= comp_id %>
+   </span> 
+  <% end %>
+</div>

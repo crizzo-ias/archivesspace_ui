@@ -1,0 +1,27 @@
+
+
+
+
+$sans-font:  gill-sans-nova, sans-serif;
+$serif-font: $sans-font;  /* we only serif on special occasions */
+$font-family-sans-serif: $sans-font;
+$font-family-serif: bodoni-urw, serif;  /* we only use this for special cases */
+
+$fi-path: "foundation-icon-fonts";
+
+/* Bootstrap icons only */
+$icon-font-path: "bootstrap-sass/";
+$icon-font-name: "glyphicons-halflings-regular";
+$icon-font-svg-id: "";
+$bootstrap-sass-asset-helper: false;
+
+
+$row-width: 100%;
+
+$body-font-family: $sans-font;
+
+$text-color: $black;
+
+body {
+     font-family: $sans-font;
+}
