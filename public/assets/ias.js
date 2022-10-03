@@ -61,13 +61,6 @@ LeftSidebar.prototype.bind_events = function() {
       });
 };
 
-function setupRequest(modalId, text) {
-    $("#request_modal * .action-btn").hide();
-    $('#request_sub').submit(function(e) {
-        $("#request_modal").modal('show');
-        return false;
-	});
-}
 
 function new_row_from_template() {
     var num = $as.find(".search_row").size();
