@@ -4,17 +4,17 @@
   <% @search = Search.new unless defined?(@search) %>
   <%= form_tag(app_prefix("#{search_url}"), method: 'get', :id => 'advanced_search') do %>
   <% (0...[1, @search.q.length].max).each do |i| %>
-  <div class="row search_row col-md-10" id="search_row_<%= i %>">
+  <div class="search_row col-md-10" id="search_row_<%= i %>">
     <div class="search_row_container form-inline">
 
-      <div class="input-group search-row container" id="form-container">
+      <div class="input-group search-row" id="form-container">
         <%= label_tag("op#{i}", t('advanced_search.operator_label'), :class => 'sr-only') %>
-        <%= select_tag('op[]', options_for_select(Search.get_boolean_opts, @search[:op][i]), disabled: (i == 0), :id => "op#{i}",:class=> 'form-control search_placeholder and-field' + (i == 0 ? ' hidden' : '')) %>
+        <%= select_tag('op[]', options_for_select(Search.get_boolean_opts, @search[:op][i]), disabled: (i == 0), :id => "op#{i}",:class=> 'form-control search_placeholder and-field options-for-select' + (i == 0 ? ' d-none' : '')) %>
         <%= hidden_field_tag('op[]','', :id => 'op_') if i == 0 %>
         <%= label_tag(:"q#{i}", t('navbar.search_placeholder'),:class => 'sr-only repeats') %>
         <%= text_field_tag('q[]', CGI.unescape(@search[:q][i] || ''), placeholder:  t('navbar.search_placeholder'), :id => "q#{i}",
           :class=> 'form-control search-field search_placeholder js-search-box repeats col-xs-12') %>
-        <span class="input-group-btn">
+        <span class="input-group-btn input-group-append">
           <%= select_tag('field[]', options_for_select(field_options, @search[:field][i]), :id=> "field#{i}", :class=> 'form-control search-keyword search_placeholder repeats') %>
           <% if i == 0 %>
             <%= label_tag(:"field#{i}", t('search-field'),:class => 'sr-only repeats') %>
@@ -39,7 +39,10 @@
         <%= label_tag(:"to_year#{i}", "#{t('search_results.filter.to_year')}", :class=> 'sr-only repeats') %>
         <%= text_field_tag('to_year[]', @search[:to_year][i], :size => 4, :maxlength => 4, :id => "to_year#{i}",
           :class=> 'form-control repeats to-field', :placeholder => t('search_results.filter.to')) %>
-        <span class="plusminus"><i aria-hidden="true" class="fa fa-plus"></i></span>
+        <button type="button" class="plusminus plusminus-btn btn btn-sm" id="plusminus<%= i %>" data-action="add"
+                title="<%= t('advanced_search.add_row') %>" aria-label="<%= t('advanced_search.add_row') %>">
+          <i aria-hidden="true" class="fa fa-plus"></i>
+        </button>
       </div>
     </div>
     <div id="mobile-submit">

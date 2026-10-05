@@ -32,14 +32,15 @@
     root_node = @result.root_node_uri
     current_node = @result.uri
   end
-  do_sidebar = !root_node.blank? %>
+  do_sidebar = !root_node.blank?
+  sidebar_position = AppConfig[:pui_collection_org_sidebar_position] %>
 <a name="main" title="<%= t("internal_links.main") %>"></a>
 <div id="main-content" class="row">
-  <div class="row" id="info_row">
-    <div class="information col-sm-7">
+  <div class="row col-sm-12" id="info_row">
+    <div class="information col-sm-8">
       <%= render partial: "shared/id", locals: { :result => @result } %>
     </div>
-    <div class="page_actions col-sm-5 right">
+    <div class="page_actions col-sm-4">
     <%= render partial: "shared/page_actions", locals: { :record => @result, :title => @result.display_string, :url => request.fullpath, :cite => @result.cite } %>
     </div>
   </div>
@@ -51,8 +52,8 @@
   </div>
 </div>
 
-  <div class="row" id="notes_row">
-   <div class="col-sm-9 <%= "col-sm-push-3" if do_sidebar %>">
+  <div class="row col-sm-12" id="notes_row">
+   <div class="col-sm-9 <%= (sidebar_position == 'left' ? 'order-2' : 'order-1') if do_sidebar %>">
     <% if defined?(comp_id) && !comp_id && !@result["json"]["ref_id"].blank? %>
       <span class='ref_id'>[<%= t("archival_object._public.header.ref_id") %>: <%= @result["json"]["ref_id"] %>]</span>
     <% end %>
@@ -65,8 +66,8 @@
     <%= render partial: "shared/record_innards" %>
    </div>
    <% if do_sidebar %>
-    <div id="sidebar" class="sidebar sidebar-container col-sm-3 col-sm-pull-9 resizable-sidebar">
-      <%= render partial: "shared/search_box", :locals => { :search_url => app_prefix("#{@result["resource"]}/search") } %>
+    <div id="sidebar" class="sidebar sidebar-container col-sm-3 resizable-sidebar <%= sidebar_position == 'left' ? 'order-1' : 'order-2' %>">
+      <%= render partial: "shared/search_box", :locals => { :search_url => app_prefix("#{root_node}/search") } %>
       
       <%= render partial: "shared/children_tree", :locals => { :heading_text => heading_text, :root_node_uri => root_node, :current_node_uri => current_node } %>
       

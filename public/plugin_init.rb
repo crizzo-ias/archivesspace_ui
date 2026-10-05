@@ -124,7 +124,7 @@ Rails.application.config.after_initialize do
         @context = [{ :uri => @repo_info["top"]["uri"], :crumb => @repo_info["top"]["name"] }, { :uri => nil, :crumb => process_mixed_content(@result.display_string) }]
         get_digital_objects(uri, params)
         fill_request_info
-      rescue RecordNotFound => bang
+      rescue RecordNotFound
         @type = I18n.t("resource._singular")
         @page_title = I18n.t("errors.error_404", :type => @type)
         @uri = uri
@@ -170,7 +170,7 @@ Rails.application.config.after_initialize do
       begin
         set_up_search(["digital_object"], [], { "resolve[]" => ["resource:id@compact_resource", "ancestors:id@compact_resource"] }, {}, search_uris)
         @results = archivesspace.search(@query, 1, @criteria)
-      rescue Exception => error
+      rescue => error
         flash[:error] = I18n.t("errors.unexpected_error")
         Rails.logger.debug("UNEXPECTED ERROR!: #{error.pretty_inspect}")
         Rails.logger.debug("BACKTRACE: #{error.backtrace.pretty_inspect}")
@@ -205,7 +205,7 @@ Rails.application.config.after_initialize do
       # looking for digital objects goes here
       begin
         @digital_count = get_resource_digital_objects(@request.request_uri, 1)["numFound"] || 0
-      rescue Exception => boom
+      rescue => boom
         STDERR.puts "Error getting digital object count for #{@request.request_uri}: #{boom}"
         @has_digital = false
       end
@@ -220,13 +220,13 @@ Rails.application.config.after_initialize do
         dig_uris += ao["digital_object_uris"]
       end
       dig_uris = dig_uris.map { |u| "\"#{u}\"" }
-      ids = "#{dig_uris.join(" OR ")}"
+      ids = dig_uris.join(" OR ")
       solr_params = { "q" => "id:cat(#{ids})",
                       "fq" => "primary_type:digital_object AND publish:true",
                       "rows" => size,
                       "wt" => "json" }
       solr_results = archivesspace.solr(solr_params)
-      results = solr_results["response"]
+      solr_results["response"]
     end
 
     #types:pui_digital_object AND publish:true AND linked_instance_uris:"/repositories/2/resources/2"
@@ -247,13 +247,12 @@ Rails.application.config.after_initialize do
                       "fl" => "id,uri, digital_object_uris",
                       "wt" => "json" }
       solr_results = archivesspace.solr(solr_params)
-      results = solr_results["response"]
+      solr_results["response"]
     end
   end
   #
   # reassign page numbers for pagination
   class Pager
-    Pager::PAGE_NUMBERS_TO_SHOW
     Pager::PAGE_NUMBERS_TO_SHOW = 5
   end
 end

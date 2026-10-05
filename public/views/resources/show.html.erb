@@ -1,10 +1,10 @@
 <a name="main" title="<%= t("internal_links.main") %>"></a>
 <div id="main-content" class="row resources">
-  <div class="row" id="info_row">
-    <div class="page_actions col-md-8 col-sm-12" id="info-buttons">
+  <div class="row col-sm-12" id="info_row">
+    <div class="page_actions col-md-4 col-sm-12" id="info-buttons">
       <%= render partial: "shared/page_actions", locals: { :record => @result, :title => @result.display_string, :url => request.fullpath, :cite => @result.cite } %>
     </div>
-    <div class="information col-md-4 col-sml-12">
+    <div class="information col-md-8 col-sm-12">
       <%= render partial: "shared/id", locals: { :result => @result, :props => { :full => true } } %>
     </div>
   </div>
@@ -16,18 +16,19 @@
   </div>
 </div>
 
-<div class="row" id="notes_row">
-  <div class="col-sm-9 col-sm-push-3">
-    <%= render partial: "resources/resource_alltabs" %> 
+<% sidebar_position = AppConfig[:pui_collection_org_sidebar_position] %>
+<div class="row col-sm-12" id="notes_row">
+  <div class="col-sm-9 <%= sidebar_position == 'left' ? 'order-2' : 'order-1' %>">
+    <%= render partial: "resources/resource_alltabs" %>
     <%= render partial: "shared/digital", locals: {
                  :dig_objs => @dig,
                  record: @result,
                  n_digital_objects: @n_digital_objects,
-               } %>   
-    
+               } %>
+
     <%= render partial: "shared/record_innards" %>
   </div>
-  <div id="sidebar" class="col-sm-3 col-sm-pull-9 sidebar sidebar-container resizable-sidebar" <% unless @has_children %>style="display: none"<% end %>>
+  <div id="sidebar" class="col-sm-3 sidebar sidebar-container resizable-sidebar <%= sidebar_position == 'left' ? 'order-1' : 'order-2' %>" <% unless @has_children %>style="display: none"<% end %>>
     <% if defined?(@filters) && defined?(@search) %>
     <%= render partial: "shared/facets" %>
    <% end %>

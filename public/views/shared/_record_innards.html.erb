@@ -8,7 +8,7 @@
          folder.shift # remove abstract from in-folder notes
        end %>
     <% unless over.blank? %>
-      <%= render partial: "shared/single_note", locals: { :type => "abstract", :note_struct => over } %>
+      <%= render partial: "shared/single_note", locals: { :type => "abstract", :note_struct => over, :calling_partial => "record_innards" } %>
     <% end %>
 
     <% unless @result.dates.blank? %>
@@ -26,7 +26,7 @@
     <% non_folder.each do |type| %>
       <% (@result.notes[type] || []).each do |note_struct| %>
        <% unless note_struct["note_text"].blank? %>
-        <%= render partial: "shared/single_note", locals: { :type => type, :note_struct => note_struct } %>
+        <%= render partial: "shared/single_note", locals: { :type => type, :note_struct => note_struct, :calling_partial => "record_innards" } %>
        <% end %>
       <% end %>
     <% end %>
@@ -62,7 +62,7 @@
 </div>
 
     <div class="acc_holder clear" >
-      <div class="panel-group" id="res_accordion">
+      <div class="panel-group accordion" id="res_accordion">
 	<% x = render partial: "shared/multi_notes", locals: { :types => folder } %>
 	<% unless x.blank? %>
 	<%= render partial: "shared/accordion_panel", locals: { :p_title => t("resource._public.additional"),

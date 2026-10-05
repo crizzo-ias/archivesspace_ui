@@ -13,13 +13,22 @@ $ias_greenish: #5f9e00;
 $ias_greyish: #ADA089;
 */
 
+body {
+    font-family: "gill-sans-nova", sans-serif;
+    font-size: 14px;
+}
+
 a { color: #03315C; } /* assume dark blue unless otherwise told no */
 
 a:hover, a:focus {
    color: #f2d997; /* gold */
 }
 .under {text-decoration: underline;}  /* for those occasions where we *want* underlining */
-h1, .h1 {
+h1, h2, h3, h4, .h1, .h2, .h3, .h4 {
+    color: #00171f;
+    font-family: "gill-sans-nova", sans-serif;
+}
+#header h1, .h1 {
     font-family: "bodoni-urw",serif;
     color: #03315c;
 }
@@ -32,6 +41,7 @@ h1 a, .h1 a {
 
 h1.full-chars {
     font-family:  "gill-sans-nova", sans-serif;
+    color: #03315c;
     margin-top: 5px;
 }
 
@@ -159,11 +169,13 @@ span.large_it {
 }
 
 #header .col-sm-9 {
-  float: right;
+  order: 2;
   text-align: right;
 }
+#header .col-sm-3 {
+  order: 1;
+}
 #header .logo {
-  float: left;
   text-align: left;
   height: 60px;
 
@@ -257,14 +269,14 @@ a.accordion-toggle.collapsed:after {
     border-color: #ffffff;
 }
 
-.collapse.in {
+.collapse.show {
     border: 0;
     border-color: #ffffff;
     overflow-y: unset;
 }
-.collapse.in  .navbar-nav > li {
+.collapse.show  .navbar-nav > li {
   margin-left: 1rem;
-} 
+}
 
 /* end of accordion styling */
 
@@ -339,11 +351,16 @@ h1 > span.title {
 }
 
 .navbar-default .navbar-nav > li > a {
-  color: #FFFFFF;
+  color: #FFFFFF !important;
   border-right: 1px solid #055299;
   font-size: inherit !important;
   background-color: transparent;
   margin:0;
+  padding: 10px 15px !important;
+}
+
+.navbar-default .navbar-toggler {
+  border: 1px solid rgba(255,255,255,.75);
 }
 
 
@@ -352,10 +369,10 @@ h1 > span.title {
 }
 
 .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
-  color: #f2d997;
+  color: #f2d997 !important;
   text-decoration: none;
   background-color: transparent;
-} 
+}
 
 .search-keyword {
   border-radius: 0;
@@ -367,11 +384,54 @@ h1 > span.title {
   border-right: 1px dotted #000000;
 }
 
+/* search field, keyword dropdown, and search button must share a fixed
+   height so they line up regardless of core's default form-control sizing */
+#q0, #field0 {
+  height: 34px;
+  box-sizing: border-box;
+}
+
 .search-row {
   display: inline-flex !important;
+  flex-wrap: nowrap !important;
   width:100%;
+  flex-grow: 1;
   margin-bottom: 10px;
   height: 34px;
+}
+
+/* Bootstrap 5 dropped .input-group-btn/.input-group-append styling entirely,
+   leaving this span to render as a plain block (stacking its select + button
+   vertically) instead of side by side; make it self-sufficient regardless of
+   which Bootstrap version core ships. */
+.input-group-btn.input-group-append {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  align-items: stretch !important;
+  width: auto !important;
+}
+
+/* Same story for the limit/years filter row: .form-inline/.form-group no
+   longer provide inline layout in Bootstrap 5, so lay these out explicitly. */
+.search-filter-row {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  width: auto !important;
+}
+.limit-filter-col, .years-filter-col {
+  display: flex !important;
+  align-items: center !important;
+  width: auto !important;
+  flex: 0 0 auto !important;
+}
+#limit {
+  width: auto !important;
+  display: inline-block !important;
+}
+#from_year0, #to_year0 {
+  width: 8rem !important;
+  display: inline-block !important;
 }
 
 .search_placeholder {
@@ -556,6 +616,7 @@ div.search {
     color: #FFFFFF;
     padding-bottom: 25px;
     padding-top: 25px;
+    margin-bottom: 2em;
     background: #03315c; /* For browsers that do not support gradients */
     background: linear-gradient( to right, #03315c, #447DB3); /* Standard syntax (must be last) */
 }
@@ -607,6 +668,18 @@ div.search {
 /* plusminus styling of icon */
 .plusminus > .btn {
     margin-bottom: 3px;
+}
+
+.plusminus-btn {
+    color: #fff;
+    background-color: #055299;
+    border-color: #fff;
+}
+
+.plusminus-btn:hover, .plusminus-btn:focus {
+    color: #fff;
+    background-color: #03315c;
+    border-color: #fff;
 }
 
 i.fa {
@@ -782,9 +855,9 @@ a.thumbnail.digital_object{
 }
 
 .pagination > .active > a, .pagination > .active > a:hover, .pagination > .active > a:focus, .pagination > .active > span, .pagination > .active > span:hover, .pagination > .active > span:focus {
-     color: #fff;
-     background-color: #1e1e1e;
-    border-color:  #000000;
+     color: #fff !important;
+     background-color: #1e1e1e !important;
+    border-color:  #000000 !important;
 }
 
 /*  no borders in results; zebra striping; */
@@ -1018,6 +1091,26 @@ ul.breadcrumb {background-color: #FFFFFF; }
   margin-top: -2px !important;
 }
 
+/* Bootstrap 5's .form-control defaults to display:block/width:100%, and
+   .form-inline no longer exists to override that back to inline-block, so
+   the sidebar "search within collection" field and button stack instead of
+   sitting on one line; lay the row out explicitly regardless of core's
+   version, with the field filling the available width instead of a fixed
+   11rem (which truncated the "Search within Archival Collection" placeholder). */
+.search form.form-inline > .form-group {
+  display: flex !important;
+  align-items: center !important;
+  width: 100% !important;
+}
+#filter_q0 {
+  flex: 1 1 auto !important;
+  min-width: 0 !important;
+  width: auto !important;
+}
+#submit_search.embedded-search {
+  flex: 0 0 auto !important;
+}
+
 /* flot the images div right */
 .images {
     float: right;
@@ -1171,6 +1264,11 @@ span.dig_flag {
     padding-top: 6px;
     font-weight: bold;
     text-transform: uppercase;
+    flex-shrink: 0;
+    white-space: nowrap;
+    min-width: 110px;
+    height: 34px;
+    box-sizing: border-box;
 }
 form.form-inline #submit_search {
     margin-left: 4px;
@@ -1189,15 +1287,25 @@ form.form-inline #from_year0, form.form-inline #to_year0 {
     margin-left: 5px;
 }
 
-/* move the sidebar handle to the right */
-  #sidebar.resizable-sidebar .resizable-sidebar-handle {
-      left: auto;
-      right: 0;
+#sidebar.resizable-sidebar .resizable-sidebar-handle {
       background-color: #f2f2f2;
 }
 
 #info-buttons {
-  float: right;
+  order: 2;
+}
+
+/* the "New Search"/"Refine Search" wrapper is mistakenly styled as both
+   .btn and .btn-group, and its two children (an <a> and a <button>) don't
+   stretch to a common height by default */
+.searchstatement .btn-group.pull-right {
+  padding: 0;
+  border: none;
+  align-items: stretch;
+}
+.searchstatement .btn-group.pull-right > * {
+  height: 34px;
+  box-sizing: border-box;
 }
 
 /* media query adjustments */
